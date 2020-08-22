@@ -26,8 +26,8 @@ func _end_game(points):
 	$EndScreen.show()
 
 #	Set messages
-	$EndScreen/Label.set_text(_get_message(points))
-	$EndScreen/Label2.set_text("Points: " + str(points))
+	$EndScreen/EndGameMessageLabel.set_text(_get_message(points))
+	$EndScreen/PointsLabel.set_text("Points: " + str(points))
 
 
 func _start_screen():
@@ -38,15 +38,13 @@ func _start_screen():
 func _start_game():
 	$StartScreen.hide()
 	$EndScreen.hide()
-
-
-func _on_Button_pressed():
-	_start_game()
 	
 	emit_signal("start_game")
 
 
-func _on_Button2_pressed():
+func _on_StartGameButton_pressed():
 	_start_game()
-	
-	emit_signal("start_game")
+
+
+func _on_RestartButton_pressed():
+	_start_game()

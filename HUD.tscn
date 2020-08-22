@@ -18,7 +18,7 @@ script = ExtResource( 2 )
 [node name="StartScreen" type="Node2D" parent="."]
 visible = false
 
-[node name="Label" type="Label" parent="StartScreen"]
+[node name="GameTitleLabel" type="Label" parent="StartScreen"]
 margin_left = 111.5
 margin_top = 57.0
 margin_right = 675.5
@@ -32,7 +32,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Button" type="Button" parent="StartScreen"]
+[node name="StartGameButton" type="Button" parent="StartScreen"]
 margin_left = 358.72
 margin_top = 396.85
 margin_right = 438.72
@@ -45,8 +45,9 @@ __meta__ = {
 }
 
 [node name="EndScreen" type="Node2D" parent="."]
+visible = false
 
-[node name="Label" type="Label" parent="EndScreen"]
+[node name="EndGameMessageLabel" type="Label" parent="EndScreen"]
 margin_left = 111.5
 margin_top = 57.0
 margin_right = 675.5
@@ -61,7 +62,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label2" type="Label" parent="EndScreen"]
+[node name="PointsLabel" type="Label" parent="EndScreen"]
 margin_left = 111.0
 margin_top = 247.919
 margin_right = 679.743
@@ -76,7 +77,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Button2" type="Button" parent="EndScreen"]
+[node name="RestartGameButton" type="Button" parent="EndScreen"]
 margin_left = 358.72
 margin_top = 396.85
 margin_right = 438.72
@@ -87,5 +88,5 @@ text = "Restart"
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="pressed" from="StartScreen/Button" to="." method="_on_Button_pressed"]
-[connection signal="pressed" from="EndScreen/Button2" to="." method="_on_Button2_pressed"]
+[connection signal="pressed" from="StartScreen/StartGameButton" to="." method="_on_StartGameButton_pressed"]
+[connection signal="pressed" from="EndScreen/RestartGameButton" to="." method="_on_RestartButton_pressed"]
