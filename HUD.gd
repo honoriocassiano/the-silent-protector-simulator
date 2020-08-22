@@ -1,30 +1,50 @@
 extends CanvasLayer
 
-signal start_game
+signal start_game()
 
-func show_message(text):
-	$MessageLabel.text = text
-	$MessageLabel.show()
-	$MessageTimer.start()
-
-
-func show_game_over():
-	show_message("Game Over")
-	yield($MessageTimer, "timeout")
-	$MessageLabel.text = "Dodge the\nCreeps"
-	$MessageLabel.show()
-	yield(get_tree().create_timer(1), "timeout")
-	$StartButton.show()
+const messagesByMinPoints = [
+	[50, "The army is proud of you!"],
+	[0, "You failed the nation!"]
+]
 
 
-func update_score(score):
-	$ScoreLabel.text = str(score)
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	$StartScreen.show()
+	$EndScreen.hide()
 
 
-func _on_StartButton_pressed():
-	$StartButton.hide()
+func _get_message(points):
+	
+	for messageByMinPoints in messagesByMinPoints:
+		if points > messageByMinPoints[0]:
+			return messageByMinPoints[1]
+
+
+func end_game(points):
+	$StartScreen.hide()
+	$EndScreen.show()
+
+#	Set messages
+	$EndScreen/EndGameMessageLabel.set_text(_get_message(points))
+	$EndScreen/PointsLabel.set_text("Points: " + str(points))
+
+
+func _start_screen():
+	$StartScreen.show()
+	$EndScreen.hide()
+
+
+func _start_game():
+	$StartScreen.hide()
+	$EndScreen.hide()
+	
 	emit_signal("start_game")
 
 
-func _on_MessageTimer_timeout():
-	$MessageLabel.hide()
+func _on_StartGameButton_pressed():
+	_start_game()
+
+
+func _on_RestartButton_pressed():
+	_start_game()

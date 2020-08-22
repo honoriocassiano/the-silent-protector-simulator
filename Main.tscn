@@ -1,59 +1,57 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://Main.gd" type="Script" id=1]
-[ext_resource path="res://Mob.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Player.tscn" type="PackedScene" id=3]
-[ext_resource path="res://HUD.tscn" type="PackedScene" id=4]
-[ext_resource path="res://art/House In a Forest Loop.ogg" type="AudioStream" id=5]
-[ext_resource path="res://art/gameover.wav" type="AudioStream" id=6]
+[ext_resource path="res://Bed.tscn" type="PackedScene" id=1]
+[ext_resource path="res://HUD.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Soldier.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Main.gd" type="Script" id=4]
+[ext_resource path="res://Shoot.tscn" type="PackedScene" id=5]
 
-[sub_resource type="Curve2D" id=1]
+[sub_resource type="Gradient" id=1]
+colors = PoolColorArray( 0.737255, 0.666667, 0.521569, 1, 0.917647, 0.894118, 0.768627, 1 )
+
+[sub_resource type="GradientTexture" id=2]
+gradient = SubResource( 1 )
+width = 800
+
+[sub_resource type="Curve2D" id=3]
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 480, 0, 0, 0, 0, 0, 480, 720, 0, 0, 0, 0, 0, 720, 0, 0, 0, 0, 0, 0 )
+"points": PoolVector2Array( 0, 0, 0, 0, -0.615845, -3.41257, 0, 0, 0, 0, 799.434, -0.892715, 0, 0, 0, 0, 799.484, 599.805, 0, 0, 0, 0, -2.15314, 598.217 )
 }
 
 [node name="Main" type="Node"]
-script = ExtResource( 1 )
-Mob = ExtResource( 2 )
+script = ExtResource( 4 )
+Shoot = ExtResource( 5 )
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="TextureRect" type="TextureRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_right = 320.0
-margin_bottom = -120.0
-color = Color( 0.219608, 0.372549, 0.380392, 1 )
+margin_right = 6.10352e-05
+margin_bottom = -599.0
+rect_scale = Vector2( 1, 600 )
+texture = SubResource( 2 )
+stretch_mode = 4
+flip_h = true
 __meta__ = {
-"_edit_use_anchors_": false
+"_edit_group_": true,
+"_edit_use_anchors_": true
 }
 
-[node name="Player" parent="." instance=ExtResource( 3 )]
+[node name="ShootSpawnTimer" type="Timer" parent="."]
 
-[node name="MobTimer" type="Timer" parent="."]
-wait_time = 0.5
+[node name="HUD" parent="." instance=ExtResource( 2 )]
 
-[node name="ScoreTimer" type="Timer" parent="."]
+[node name="Bed" parent="." instance=ExtResource( 1 )]
+position = Vector2( 228.715, 223.253 )
 
-[node name="StartTimer" type="Timer" parent="."]
-wait_time = 2.0
-one_shot = true
+[node name="Soldier" parent="." instance=ExtResource( 3 )]
+position = Vector2( 230.927, 384.434 )
 
-[node name="StartPosition" type="Position2D" parent="."]
-position = Vector2( 240, 450 )
+[node name="ShootPath" type="Path2D" parent="."]
+curve = SubResource( 3 )
 
-[node name="MobPath" type="Path2D" parent="."]
-curve = SubResource( 1 )
-
-[node name="MobSpawnLocation" type="PathFollow2D" parent="MobPath"]
-
-[node name="HUD" parent="." instance=ExtResource( 4 )]
-
-[node name="Music" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 5 )
-
-[node name="DeathSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 6 )
-[connection signal="hit" from="Player" to="." method="game_over"]
-[connection signal="timeout" from="MobTimer" to="." method="_on_MobTimer_timeout"]
-[connection signal="timeout" from="ScoreTimer" to="." method="_on_ScoreTimer_timeout"]
-[connection signal="timeout" from="StartTimer" to="." method="_on_StartTimer_timeout"]
-[connection signal="start_game" from="HUD" to="." method="new_game"]
+[node name="ShootSpawnLocation" type="PathFollow2D" parent="ShootPath"]
+position = Vector2( -0.615845, -3.41257 )
+rotation = 0.00314968
+[connection signal="timeout" from="ShootSpawnTimer" to="." method="_on_ShootSpawnTimer_timeout"]
+[connection signal="start_game" from="HUD" to="." method="_on_HUD_start_game"]
+[connection signal="game_over" from="Bed" to="." method="_on_Bed_game_over"]
