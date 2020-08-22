@@ -25,28 +25,16 @@ func _process(delta):
 	
 	var distance = bedPosition.distance_to(mousePosition)
 
-#	var diff = mousePosition - bedPositon
-	
 	var cosine = (mousePosition.x - bedPosition.x) / distance
 	var sine = (mousePosition.y - bedPosition.y) / distance
 	
-#	position.x = cosine * DISTANCE_FROM_BED + bedPosition.x
-#	position.y = sine * DISTANCE_FROM_BED + bedPosition.y
-
 	position.x = cosine * DISTANCE_FROM_BED + bedPosition.x
 	position.y = sine * DISTANCE_FROM_BED + bedPosition.y
 	
-#	print_debug(distance)
-#	print_debug(cosine, sine)
-#	print_debug(position)
+	var angle = -atan2(mousePosition.x - bedPosition.x, mousePosition.y - bedPosition.y)
+#	var angle = sine / cosine
 	
-#	var angle = atan2(diff.y, diff.x)
-#	var tangent = diff.y / diff.x
-	
-#	print_debug(angle)
-	
-#	position = bedPosition
-#	position = mousePosition
+	rotation = angle
 
 func _on_Bed_position_ready(pos):
 	pass # Replace with function body.
