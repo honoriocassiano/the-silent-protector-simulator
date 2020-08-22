@@ -17,7 +17,7 @@ func _ready():
 #func _process(delta):
 #	pass
 
-func new_game():
+func _new_game():
 
 	$Bed.start()
 	$Soldier.start()
@@ -68,4 +68,24 @@ func _on_ShootSpawnTimer_timeout():
 
 func _on_HUD_start_game():
 
-	new_game()
+	_new_game()
+
+
+func _end_game():
+
+#	TODO Count the points
+	var points = 60
+
+	$ShootSpawnTimer.stop()
+
+#	Delete all the shoots that still active
+	get_tree().call_group("shoots", "queue_free")
+
+	$Bed.hide()
+	$Soldier.hide()
+
+	$HUD.end_game(points)
+
+
+func _on_Bed_game_over():
+	_end_game()

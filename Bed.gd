@@ -3,7 +3,7 @@ extends Area2D
 export var speed = 50
 var screen_size
 
-signal position_ready(pos)
+signal game_over()
 
 func start():
 	# Show when game starts
@@ -25,28 +25,39 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	var velocity = Vector2()  # The player's movement vector.
 	
-	if Input.is_action_pressed("move_right"):
-		velocity.x += 1
-	if Input.is_action_pressed("move_left"):
-		velocity.x -= 1
-	if Input.is_action_pressed("move_down"):
-		velocity.y += 1
-	if Input.is_action_pressed("move_up"):
-		velocity.y -= 1
+#	Process events only if Bed is visible
+	if visible:
 	
-	# calculate the final velocity vector
-	if velocity.length() > 0:
-		velocity = velocity.normalized() * speed
+		var velocity = Vector2()  # The player's movement vector.
 		
-	# perform the actual movement
-	position += velocity * delta
-	
-	# ensure bed and soldier remain on the screen
-	var soldier_distance = get_parent().soldier_distance_from_bed
-	
-	position.x = clamp(position.x, 0 + soldier_distance, 
-					   screen_size.x - soldier_distance)
-	position.y = clamp(position.y, 0 + soldier_distance, 
-					   screen_size.y - soldier_distance)
+		if Input.is_action_pressed("move_right"):
+			velocity.x += 1
+		if Input.is_action_pressed("move_left"):
+			velocity.x -= 1
+		if Input.is_action_pressed("move_down"):
+			velocity.y += 1
+		if Input.is_action_pressed("move_up"):
+			velocity.y -= 1
+		
+		# calculate the final velocity vector
+		if velocity.length() > 0:
+			velocity = velocity.normalized() * speed
+			
+		# perform the actual movement
+		position += velocity * delta
+		
+		# ensure bed and soldier remain on the screen
+		var soldier_distance = get_parent().soldier_distance_from_bed
+		
+		position.x = clamp(position.x, 0 + soldier_distance, 
+						   screen_size.x - soldier_distance)
+		position.y = clamp(position.y, 0 + soldier_distance, 
+						   screen_size.y - soldier_distance)
+
+
+func _on_Area2D_body_entered(body):
+
+	body.queue_free()
+
+	emit_signal("game_over")
