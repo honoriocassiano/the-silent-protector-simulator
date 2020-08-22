@@ -31,10 +31,9 @@ follow_viewport_enable = true
 script = ExtResource( 2 )
 
 [node name="StartScreen" type="Node2D" parent="."]
+visible = false
 
-[node name="Label" type="Label" parent="StartScreen" groups=[
-"hud_start_game",
-]]
+[node name="GameTitleLabel" type="Label" parent="StartScreen"]
 margin_left = 111.5
 margin_top = 161.5
 margin_right = 675.5
@@ -51,9 +50,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Button" type="Button" parent="StartScreen" groups=[
-"hud_start_game",
-]]
+[node name="StartGameButton" type="Button" parent="StartScreen"]
 margin_left = 358.72
 margin_top = 396.85
 margin_right = 438.72
@@ -69,4 +66,50 @@ text = "Start"
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="pressed" from="StartScreen/Button" to="." method="_on_Button_pressed"]
+
+[node name="EndScreen" type="Node2D" parent="."]
+visible = false
+
+[node name="EndGameMessageLabel" type="Label" parent="EndScreen"]
+margin_left = 111.5
+margin_top = 57.0
+margin_right = 675.5
+margin_bottom = 101.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_pivot_offset = Vector2( 282, 22 )
+custom_fonts/font = SubResource( 1 )
+text = "The Army is proud of you!"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PointsLabel" type="Label" parent="EndScreen"]
+margin_left = 111.0
+margin_top = 247.919
+margin_right = 679.743
+margin_bottom = 291.919
+grow_horizontal = 2
+grow_vertical = 2
+rect_pivot_offset = Vector2( 282, 22 )
+custom_fonts/font = SubResource( 1 )
+text = "Points: "
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RestartGameButton" type="Button" parent="EndScreen"]
+margin_left = 358.72
+margin_top = 396.85
+margin_right = 438.72
+margin_bottom = 432.85
+rect_pivot_offset = Vector2( 40, 18 )
+custom_fonts/font = SubResource( 2 )
+text = "Restart"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="StartScreen/StartGameButton" to="." method="_on_StartGameButton_pressed"]
+[connection signal="pressed" from="EndScreen/RestartGameButton" to="." method="_on_RestartButton_pressed"]
