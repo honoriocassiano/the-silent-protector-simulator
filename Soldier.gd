@@ -1,6 +1,5 @@
 extends RigidBody2D
 
-const DISTANCE_FROM_BED = 100.0
 #var bedPosition = Vector2()
 
 # Declare member variables here. Examples:
@@ -30,15 +29,13 @@ func _process(delta):
 
 	var cosine = (mousePosition.x - bedPosition.x) / distance
 	var sine = (mousePosition.y - bedPosition.y) / distance
-
+	
+	position.x = cosine * get_parent().soldier_distance_from_bed + bedPosition.x
+	position.y = sine * get_parent().soldier_distance_from_bed + bedPosition.y
+	
 	var angle = -atan2(mousePosition.x - bedPosition.x, mousePosition.y - bedPosition.y)
-
-	position.x = cosine * DISTANCE_FROM_BED + bedPosition.x
-	position.y = sine * DISTANCE_FROM_BED + bedPosition.y
-
+	
 	rotation = angle
-
-	pass
 
 func _on_RigidBody2D_body_entered(body):
 	
