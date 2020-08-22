@@ -15,7 +15,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="The Silent Protector Simulador"
+config/name="The Silent Protector Simulator"
 config/description="Protect. While they sleep. Silently."
 run/main_scene="res://Main.tscn"
 config/icon="res://protect.png"
