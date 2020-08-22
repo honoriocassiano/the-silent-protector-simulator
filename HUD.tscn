@@ -20,6 +20,12 @@ bg_color = Color( 0.258824, 0, 0, 1 )
 size = 24
 font_data = ExtResource( 1 )
 
+[sub_resource type="InputEventAction" id=3]
+action = "ui_select"
+
+[sub_resource type="ShortCut" id=4]
+shortcut = SubResource( 3 )
+
 [node name="CanvasLayer" type="CanvasLayer"]
 follow_viewport_enable = true
 script = ExtResource( 2 )
