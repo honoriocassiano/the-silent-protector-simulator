@@ -43,7 +43,10 @@ grow_horizontal = 2
 grow_vertical = 2
 rect_pivot_offset = Vector2( 282, 22 )
 custom_fonts/font = SubResource( 1 )
-text = "The Silent Protector Simulator"
+custom_colors/font_color = Color( 0.258824, 0, 0, 1 )
+text = "THE SILENT PROTECTOR SIMULATOR"
+align = 1
+autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
