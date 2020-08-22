@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Bed.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Soldier.gd" type="Script" id=2]
+[ext_resource path="res://StartScreen.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Soldier.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Main.gd" type="Script" id=4]
 [ext_resource path="res://Shoot.tscn" type="PackedScene" id=5]
@@ -20,7 +20,6 @@ position = Vector2( 228.715, 223.253 )
 
 [node name="Soldier" parent="." instance=ExtResource( 3 )]
 position = Vector2( 230.927, 384.434 )
-script = ExtResource( 2 )
 
 [node name="ShootPath" type="Path2D" parent="."]
 curve = SubResource( 1 )
@@ -30,6 +29,7 @@ position = Vector2( -0.615845, -3.41257 )
 rotation = 0.00314962
 
 [node name="ShootSpawnTimer" type="Timer" parent="."]
-wait_time = 2.0
+
+[node name="CanvasLayer" parent="." instance=ExtResource( 2 )]
 [connection signal="position_ready" from="Bed" to="." method="_on_Bed_position_ready"]
 [connection signal="timeout" from="ShootSpawnTimer" to="." method="_on_ShootSpawnTimer_timeout"]
