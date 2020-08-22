@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://fonts/Xolonium-Regular.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://StartScreen.gd" type="Script" id=2]
+[ext_resource path="res://HUD.gd" type="Script" id=2]
 
 [sub_resource type="DynamicFont" id=1]
 size = 36
@@ -15,12 +15,14 @@ font_data = ExtResource( 1 )
 follow_viewport_enable = true
 script = ExtResource( 2 )
 
-[node name="Label" type="Label" parent="." groups=[
+[node name="StartScreen" type="Node2D" parent="."]
+
+[node name="Label" type="Label" parent="StartScreen" groups=[
 "hud_start_game",
 ]]
-margin_left = 118.0
+margin_left = 111.5
 margin_top = 57.0
-margin_right = 669.0
+margin_right = 675.5
 margin_bottom = 101.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -31,7 +33,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Button" type="Button" parent="." groups=[
+[node name="Button" type="Button" parent="StartScreen" groups=[
 "hud_start_game",
 ]]
 margin_left = 358.72
@@ -44,4 +46,4 @@ text = "Start"
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="StartScreen/Button" to="." method="_on_Button_pressed"]
