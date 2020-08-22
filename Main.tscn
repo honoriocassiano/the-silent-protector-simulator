@@ -6,14 +6,14 @@
 [ext_resource path="res://Main.gd" type="Script" id=4]
 [ext_resource path="res://Shoot.tscn" type="PackedScene" id=5]
 
-[sub_resource type="Gradient" id=2]
+[sub_resource type="Gradient" id=1]
 colors = PoolColorArray( 0.737255, 0.666667, 0.521569, 1, 0.917647, 0.894118, 0.768627, 1 )
 
-[sub_resource type="GradientTexture" id=3]
-gradient = SubResource( 2 )
+[sub_resource type="GradientTexture" id=2]
+gradient = SubResource( 1 )
 width = 800
 
-[sub_resource type="Curve2D" id=1]
+[sub_resource type="Curve2D" id=3]
 _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, -0.615845, -3.41257, 0, 0, 0, 0, 799.434, -0.892715, 0, 0, 0, 0, 799.484, 599.805, 0, 0, 0, 0, -2.15314, 598.217 )
 }
@@ -28,7 +28,7 @@ anchor_bottom = 1.0
 margin_right = 6.10352e-05
 margin_bottom = -599.0
 rect_scale = Vector2( 1, 600 )
-texture = SubResource( 3 )
+texture = SubResource( 2 )
 stretch_mode = 4
 flip_h = true
 __meta__ = {
@@ -47,7 +47,7 @@ position = Vector2( 228.715, 223.253 )
 position = Vector2( 230.927, 384.434 )
 
 [node name="ShootPath" type="Path2D" parent="."]
-curve = SubResource( 1 )
+curve = SubResource( 3 )
 
 [node name="ShootSpawnLocation" type="PathFollow2D" parent="ShootPath"]
 position = Vector2( -0.615845, -3.41257 )
