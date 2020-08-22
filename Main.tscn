@@ -20,6 +20,7 @@ position = Vector2( 228.715, 223.253 )
 
 [node name="Soldier" parent="." instance=ExtResource( 3 )]
 position = Vector2( 230.927, 384.434 )
+gravity_scale = 0.0
 
 [node name="ShootPath" type="Path2D" parent="."]
 curve = SubResource( 1 )
