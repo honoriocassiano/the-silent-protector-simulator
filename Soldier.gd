@@ -4,11 +4,16 @@ extends Area2D
 
 export var speed = 10
 
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	keep_in_circumference()
+	# Hide at start screen
+	hide()
 	
+	keep_in_circumference()
+
+func start():
+	# Show when game starts
+	show()
 
 func _physics_process(delta):
 	pass

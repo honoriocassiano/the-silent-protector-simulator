@@ -15,6 +15,10 @@ _data = {
 script = ExtResource( 4 )
 Shoot = ExtResource( 5 )
 
+[node name="ShootSpawnTimer" type="Timer" parent="."]
+
+[node name="HUD" parent="." instance=ExtResource( 2 )]
+
 [node name="Bed" parent="." instance=ExtResource( 1 )]
 position = Vector2( 228.715, 223.253 )
 
@@ -27,9 +31,6 @@ curve = SubResource( 1 )
 [node name="ShootSpawnLocation" type="PathFollow2D" parent="ShootPath"]
 position = Vector2( -0.615845, -3.41257 )
 rotation = 0.00314968
-
-[node name="ShootSpawnTimer" type="Timer" parent="."]
-
-[node name="CanvasLayer" parent="." instance=ExtResource( 2 )]
-[connection signal="position_ready" from="Bed" to="." method="_on_Bed_position_ready"]
 [connection signal="timeout" from="ShootSpawnTimer" to="." method="_on_ShootSpawnTimer_timeout"]
+[connection signal="start_game" from="HUD" to="." method="_on_HUD_start_game"]
+[connection signal="position_ready" from="Bed" to="." method="_on_Bed_position_ready"]
