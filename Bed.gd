@@ -20,26 +20,25 @@ func _ready():
 func _process(delta):
 	var velocity = Vector2()  # The player's movement vector.
 	
-	if Input.is_action_pressed("ui_right"):
+	if Input.is_action_pressed("move_right"):
 		velocity.x += 1
-	if Input.is_action_pressed("ui_left"):
+	if Input.is_action_pressed("move_left"):
 		velocity.x -= 1
-	if Input.is_action_pressed("ui_down"):
+	if Input.is_action_pressed("move_down"):
 		velocity.y += 1
-	if Input.is_action_pressed("ui_up"):
+	if Input.is_action_pressed("move_up"):
 		velocity.y -= 1
 	
+	# calculate the final velocity vector
 	if velocity.length() > 0:
 		velocity = velocity.normalized() * speed
-		# $AnimatedSprite.play()
-	# else:
-		# $AnimatedSprite.stop()
 		
-	# perform the actual movement...
+	# perform the actual movement
 	position += velocity * delta
 	
-	# ... as much as the bed and soldier remain on the screen
+	# ensure bed and soldier remain on the screen
 	var soldier_distance = get_parent().soldier_distance_from_bed
+	
 	position.x = clamp(position.x, 0 + soldier_distance, 
 					   screen_size.x - soldier_distance)
 	position.y = clamp(position.y, 0 + soldier_distance, 
