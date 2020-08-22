@@ -36,9 +36,9 @@ script = ExtResource( 2 )
 "hud_start_game",
 ]]
 margin_left = 111.5
-margin_top = 57.0
+margin_top = 161.5
 margin_right = 675.5
-margin_bottom = 101.0
+margin_bottom = 252.5
 grow_horizontal = 2
 grow_vertical = 2
 rect_pivot_offset = Vector2( 282, 22 )
