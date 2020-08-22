@@ -1,4 +1,4 @@
-extends Area2D
+extends RigidBody2D
 
 const DISTANCE_FROM_BED = 100.0
 #var bedPosition = Vector2()
@@ -15,6 +15,9 @@ func _ready():
 #	
 #	global bedPositon = bed.position
 
+func _physics_process(delta):
+	pass
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -22,19 +25,22 @@ func _process(delta):
 	var mousePosition = get_global_mouse_position()
 	var bed = get_parent().get_node("Bed")
 	var bedPosition = bed.position
-	
+
 	var distance = bedPosition.distance_to(mousePosition)
 
 	var cosine = (mousePosition.x - bedPosition.x) / distance
 	var sine = (mousePosition.y - bedPosition.y) / distance
-	
+
+	var angle = -atan2(mousePosition.x - bedPosition.x, mousePosition.y - bedPosition.y)
+
 	position.x = cosine * DISTANCE_FROM_BED + bedPosition.x
 	position.y = sine * DISTANCE_FROM_BED + bedPosition.y
-	
-	var angle = -atan2(mousePosition.x - bedPosition.x, mousePosition.y - bedPosition.y)
-#	var angle = sine / cosine
-	
+
 	rotation = angle
 
-func _on_Bed_position_ready(pos):
-	pass # Replace with function body.
+	pass
+
+func _on_RigidBody2D_body_entered(body):
+	
+	# TODO Play damage sound
+	body.queue_free()
