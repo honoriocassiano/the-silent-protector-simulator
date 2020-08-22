@@ -8,8 +8,6 @@ export var soldier_distance_from_bed = 100.0
 # Called when the node enters the scene tree for the first time.
 func _ready():
 
-	$ShootSpawnTimer.start()
-
 	randomize()
 
 	pass # Replace with function body.
@@ -18,6 +16,15 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+
+func new_game():
+
+	$Bed.start()
+	$Soldier.start()
+
+	$ShootSpawnTimer.start()
+
+	pass
 
 func _on_ShootSpawnTimer_timeout():
 
@@ -57,3 +64,8 @@ func _on_ShootSpawnTimer_timeout():
 #	shoot.linear_velocity = shoot.linear_velocity.rotated(direction)
 	
 	add_child(shoot)
+
+
+func _on_HUD_start_game():
+
+	new_game()

@@ -5,7 +5,14 @@ var screen_size
 
 signal position_ready(pos)
 
+func start():
+	# Show when game starts
+	show()
+
 func _ready():
+	# Hide at start screen
+	hide()
+
 	screen_size = get_viewport_rect().size
 	
 	position.x = screen_size.x / 3
