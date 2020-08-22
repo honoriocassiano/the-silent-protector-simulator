@@ -21,7 +21,7 @@ func _get_message(points):
 			return messageByMinPoints[1]
 
 
-func _end_game(points):
+func end_game(points):
 	$StartScreen.hide()
 	$EndScreen.show()
 

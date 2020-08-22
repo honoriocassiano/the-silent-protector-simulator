@@ -3,7 +3,7 @@ extends Area2D
 export var speed = 50
 var screen_size
 
-signal position_ready(pos)
+signal game_over()
 
 func start():
 	# Show when game starts
@@ -50,3 +50,10 @@ func _process(delta):
 					   screen_size.x - soldier_distance)
 	position.y = clamp(position.y, 0 + soldier_distance, 
 					   screen_size.y - soldier_distance)
+
+
+func _on_Area2D_body_entered(body):
+
+	body.queue_free()
+
+	emit_signal("game_over")
