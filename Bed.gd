@@ -3,11 +3,15 @@ extends Area2D
 export var speed = 50
 var screen_size
 
+signal position_ready(pos)
+
 func _ready():
 	screen_size = get_viewport_rect().size
 	
 	position.x = screen_size.x / 3
 	position.y = screen_size.y / 2
+	
+	emit_signal("position_ready", position)
 	
 #	TODO Hide when game start
 #	hide()
