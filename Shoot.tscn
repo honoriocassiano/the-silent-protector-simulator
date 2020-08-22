@@ -1,7 +1,7 @@
 [gd_scene load_steps=2 format=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 15, 5 )
+extents = Vector2( 5, 15 )
 
 [node name="Area2D" type="RigidBody2D"]
 mass = 0.00102041
@@ -11,10 +11,10 @@ gravity_scale = 0.0
 shape = SubResource( 1 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
-margin_left = -15.0
-margin_top = -5.0
-margin_right = 15.0
-margin_bottom = 5.0
+margin_left = -5.0
+margin_top = -15.0
+margin_right = 5.0
+margin_bottom = 15.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
