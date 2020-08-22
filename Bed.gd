@@ -18,8 +18,29 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	var velocity = Vector2()  # The player's movement vector.
 	
-#	The bed won't moves to the right, the screen that moves to the left
-#	position.x += speed * delta
+	if Input.is_action_pressed("ui_right"):
+		velocity.x += 1
+	if Input.is_action_pressed("ui_left"):
+		velocity.x -= 1
+	if Input.is_action_pressed("ui_down"):
+		velocity.y += 1
+	if Input.is_action_pressed("ui_up"):
+		velocity.y -= 1
 	
-	pass
+	if velocity.length() > 0:
+		velocity = velocity.normalized() * speed
+		# $AnimatedSprite.play()
+	# else:
+		# $AnimatedSprite.stop()
+		
+	# perform the actual movement...
+	position += velocity * delta
+	
+	# ... as much as the bed and soldier remain on the screen
+	var soldier_distance = get_parent().soldier_distance_from_bed
+	position.x = clamp(position.x, 0 + soldier_distance, 
+					   screen_size.x - soldier_distance)
+	position.y = clamp(position.y, 0 + soldier_distance, 
+					   screen_size.y - soldier_distance)
