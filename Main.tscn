@@ -38,6 +38,9 @@ __meta__ = {
 
 [node name="ShootSpawnTimer" type="Timer" parent="."]
 
+[node name="ScoreTimer" type="Timer" parent="."]
+wait_time = 0.5
+
 [node name="HUD" parent="." instance=ExtResource( 2 )]
 
 [node name="Bed" parent="." instance=ExtResource( 1 )]
@@ -53,5 +56,6 @@ curve = SubResource( 3 )
 position = Vector2( -0.615845, -3.41257 )
 rotation = 0.00314968
 [connection signal="timeout" from="ShootSpawnTimer" to="." method="_on_ShootSpawnTimer_timeout"]
+[connection signal="timeout" from="ScoreTimer" to="." method="_on_ScoreTimer_timeout"]
 [connection signal="start_game" from="HUD" to="." method="_on_HUD_start_game"]
 [connection signal="game_over" from="Bed" to="." method="_on_Bed_game_over"]

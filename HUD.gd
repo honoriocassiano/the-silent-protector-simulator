@@ -11,6 +11,7 @@ const messagesByMinPoints = [
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$StartScreen.show()
+	$GameScreen.hide()
 	$EndScreen.hide()
 
 
@@ -21,22 +22,29 @@ func _get_message(points):
 			return messageByMinPoints[1]
 
 
+func update_score(score):
+	$GameScreen/GameScoreLabel.set_text("Score: " + str(score))
+
+
 func end_game(points):
 	$StartScreen.hide()
+	$GameScreen.hide()
 	$EndScreen.show()
 
 #	Set messages
 	$EndScreen/EndGameMessageLabel.set_text(_get_message(points))
-	$EndScreen/PointsLabel.set_text("Points: " + str(points))
+	$EndScreen/PointsLabel.set_text("Score: " + str(points))
 
 
 func _start_screen():
 	$StartScreen.show()
+	$GameScreen.hide()
 	$EndScreen.hide()
 
 
 func _start_game():
 	$StartScreen.hide()
+	$GameScreen.show()
 	$EndScreen.hide()
 	
 	emit_signal("start_game")
