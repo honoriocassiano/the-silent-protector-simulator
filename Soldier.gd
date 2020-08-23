@@ -2,7 +2,11 @@ extends Area2D
 
 #var bedPosition = Vector2()
 
-export var speed = 10
+export var speed = 7.5
+
+var current_frame = 0
+var distance_travelled_with_current_frame = 0
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -39,20 +43,30 @@ func _process(delta):
 		var target_x = cosine * radius + bed_position.x
 		var target_y = sine * radius + bed_position.y
 		
-		# calculate if soldier should move clockwise or counterclockwise
-		var orientation = (bed_position.y - position.y) * (target_x - bed_position.x) \
-				- (target_y - bed_position.y) * (bed_position.x - position.x)
-	
-		if orientation > 0:  # if clockwise
-			angle_to_bed += speed * delta
-		else:  # if counterclockwise or colinear
-			angle_to_bed -= speed * delta
+		# move if and only if mouse is sufficiently further away
+		if position.distance_to(Vector2(target_x, target_y)) >= 1:
+			# calculate if soldier should move clockwise or counterclockwise
+			var orientation = (bed_position.y - position.y) * (target_x - bed_position.x) \
+					- (target_y - bed_position.y) * (bed_position.x - position.x)
+		
+			if orientation > 0:  # if clockwise
+				angle_to_bed += speed * delta
+			else:  # if counterclockwise or colinear
+				angle_to_bed -= speed * delta
 			
-		
-		var new_vector = Vector2(cos(angle_to_bed), sin(angle_to_bed)) * radius
-		
-		# perform the movement
-		position = bed_position + new_vector
+			var new_vector = Vector2(cos(angle_to_bed), sin(angle_to_bed)) * radius
+			
+			# determine whether to play the animation
+			distance_travelled_with_current_frame += speed * delta
+			
+			if distance_travelled_with_current_frame > 0.25:
+				current_frame = (current_frame + 1) % 2
+				distance_travelled_with_current_frame = 0
+				
+				$AnimatedSprite.set_frame(current_frame)
+			
+			# perform the movement
+			position = bed_position + new_vector
 		
 		# always face towards bed
 		rotation = -atan2(position.x - bed_position.x, position.y - bed_position.y)

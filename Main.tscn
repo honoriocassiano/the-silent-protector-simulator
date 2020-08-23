@@ -32,7 +32,7 @@ Weapon = ExtResource( 5 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_right = 6.10352e-05
-margin_bottom = -599.0
+margin_bottom = -600.0
 rect_scale = Vector2( 1, 600 )
 texture = SubResource( 2 )
 stretch_mode = 4
@@ -43,6 +43,7 @@ __meta__ = {
 }
 
 [node name="ShootSpawnTimer" type="Timer" parent="."]
+wait_time = 2.0
 
 [node name="ScoreTimer" type="Timer" parent="."]
 wait_time = 0.5

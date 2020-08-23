@@ -1,10 +1,19 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Soldier.gd" type="Script" id=1]
 [ext_resource path="res://art/characters/silent-protector.png" type="Texture" id=2]
+[ext_resource path="res://art/characters/silent-protector-2.png" type="Texture" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 50.195, 10.3861 )
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "walking",
+"speed": 15.0
+} ]
 
 [node name="Area2D" type="Area2D"]
 collision_mask = 2
@@ -13,8 +22,9 @@ script = ExtResource( 1 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 0, 11 )
 scale = Vector2( 0.06, 0.06 )
-texture = ExtResource( 2 )
+frames = SubResource( 2 )
+animation = "walking"
 [connection signal="body_entered" from="." to="." method="_on_RigidBody2D_body_entered"]
