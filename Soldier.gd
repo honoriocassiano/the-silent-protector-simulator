@@ -56,6 +56,15 @@ func _process(delta):
 			
 			var new_vector = Vector2(cos(angle_to_bed), sin(angle_to_bed)) * radius
 			
+			# determine whether to play the animation
+			distance_travelled_with_current_frame += speed * delta
+			
+			if distance_travelled_with_current_frame > 0.25:
+				current_frame = (current_frame + 1) % 2
+				distance_travelled_with_current_frame = 0
+				
+				$AnimatedSprite.set_frame(current_frame)
+			
 			# perform the movement
 			position = bed_position + new_vector
 		
