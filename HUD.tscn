@@ -73,9 +73,9 @@ __meta__ = {
 }
 
 [node name="StartGameButton" type="Button" parent="StartScreen"]
-margin_left = 358.72
+margin_left = 360.0
 margin_top = 396.85
-margin_right = 438.72
+margin_right = 438.0
 margin_bottom = 432.85
 rect_pivot_offset = Vector2( 40, 18 )
 custom_styles/hover = SubResource( 2 )
@@ -91,11 +91,11 @@ __meta__ = {
 }
 
 [node name="GameOptionsButton" type="Button" parent="StartScreen"]
-margin_left = 345.72
+margin_left = 339.0
 margin_top = 449.63
-margin_right = 447.72
+margin_right = 461.0
 margin_bottom = 485.63
-rect_pivot_offset = Vector2( 40, 18 )
+rect_pivot_offset = Vector2( 51, 18 )
 custom_styles/hover = SubResource( 2 )
 custom_styles/pressed = SubResource( 3 )
 custom_styles/normal = SubResource( 4 )
@@ -108,7 +108,7 @@ __meta__ = {
 }
 
 [node name="QuitGameButton" type="Button" parent="StartScreen"]
-margin_left = 358.72
+margin_left = 360.0
 margin_top = 503.0
 margin_right = 438.72
 margin_bottom = 533.0
