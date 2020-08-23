@@ -43,6 +43,9 @@ func _on_VisibilityNotifier2D_screen_exited():
 
 
 func on_contact():
+	if $OnContactAnimation.visible:
+		return
+	
 	$OnContactAnimation.animation = on_contact
 	$OnContactAnimation.frame = 0
 	
