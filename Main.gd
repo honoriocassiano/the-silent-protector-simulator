@@ -144,3 +144,16 @@ func _on_HUD_exit_game():
 
 func _on_HUD_exit_main_menu():
 	_exit_main_menu()
+
+
+func _on_HUD_change_music_volume(value):
+	var music_list = get_tree().get_nodes_in_group("music")
+	for node in music_list:
+		node.volume_db=value
+	
+
+
+func _on_HUD_change_sound_volume(value):
+	var sound_list = get_tree().get_nodes_in_group("sound")
+	for node in sound_list:
+		node.volume_db=value

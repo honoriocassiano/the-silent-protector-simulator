@@ -3,6 +3,8 @@ extends CanvasLayer
 signal exit_main_menu()
 signal start_game()
 signal exit_game()
+signal change_music_volume(value)
+signal change_sound_volume(value)
 
 const messagesByMinPoints = [
 	[50, "The army is proud of you!"],
@@ -16,6 +18,7 @@ func _ready():
 	$PauseScreen.hide()
 	$GameScreen.hide()
 	$EndScreen.hide()
+	$OptionsScreen.hide()
 
 
 func _get_message(points):
@@ -34,6 +37,7 @@ func end_game(points):
 	$PauseScreen.hide()
 	$GameScreen.hide()
 	$EndScreen.show()
+	$OptionsScreen.hide()
 
 #	Set messages
 	$EndScreen/EndGameMessageLabel.set_text(_get_message(points))
@@ -45,6 +49,7 @@ func _start_screen():
 	$PauseScreen.hide()
 	$GameScreen.hide()
 	$EndScreen.hide()
+	$OptionsScreen.hide()
 
 
 func _start_game():
@@ -52,6 +57,7 @@ func _start_game():
 	$PauseScreen.hide()
 	$GameScreen.show()
 	$EndScreen.hide()
+	$OptionsScreen.hide()
 	
 	emit_signal("start_game")
 
@@ -84,3 +90,19 @@ func _on_MainMenuButton_pressed():
 	_start_screen()
 	
 	emit_signal("exit_main_menu")
+
+
+func _on_GameOptionsButton_pressed():
+	$StartScreen.hide()
+	$PauseScreen.hide()
+	$GameScreen.hide()
+	$EndScreen.hide()
+	$OptionsScreen.show()
+
+
+func _on_MusicSlider_value_changed(value):
+	emit_signal("change_music_volume",value)
+	
+
+func _on_SoundEffectSlider_value_changed(value):
+	emit_signal("change_sound_volume",value)

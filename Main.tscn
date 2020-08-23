@@ -63,19 +63,29 @@ curve = SubResource( 3 )
 position = Vector2( -0.615845, -3.41257 )
 rotation = 0.00314968
 
-[node name="BackgroundSound" type="AudioStreamPlayer" parent="."]
+[node name="BackgroundSound" type="AudioStreamPlayer" parent="." groups=[
+"music",
+]]
 stream = ExtResource( 6 )
 
-[node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="." groups=[
+"music",
+]]
 stream = ExtResource( 8 )
 
-[node name="InicialScreenMusic" type="AudioStreamPlayer" parent="."]
+[node name="InicialScreenMusic" type="AudioStreamPlayer" parent="." groups=[
+"music",
+]]
 stream = ExtResource( 7 )
 
-[node name="GameOverMusic" type="AudioStreamPlayer" parent="."]
+[node name="GameOverMusic" type="AudioStreamPlayer" parent="." groups=[
+"music",
+]]
 stream = ExtResource( 10 )
 
-[node name="GameOverScream" type="AudioStreamPlayer" parent="."]
+[node name="GameOverScream" type="AudioStreamPlayer" parent="." groups=[
+"sound",
+]]
 stream = ExtResource( 9 )
 
 [node name="GameStateControler" type="Node" parent="."]
@@ -83,6 +93,8 @@ pause_mode = 2
 script = ExtResource( 11 )
 [connection signal="timeout" from="ShootSpawnTimer" to="." method="_on_ShootSpawnTimer_timeout"]
 [connection signal="timeout" from="ScoreTimer" to="." method="_on_ScoreTimer_timeout"]
+[connection signal="change_music_volume" from="HUD" to="." method="_on_HUD_change_music_volume"]
+[connection signal="change_sound_volume" from="HUD" to="." method="_on_HUD_change_sound_volume"]
 [connection signal="exit_game" from="HUD" to="." method="_on_HUD_exit_game"]
 [connection signal="exit_main_menu" from="HUD" to="." method="_on_HUD_exit_main_menu"]
 [connection signal="start_game" from="HUD" to="." method="_on_HUD_start_game"]
