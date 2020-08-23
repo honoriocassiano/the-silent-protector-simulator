@@ -37,7 +37,9 @@ func _new_game():
 
 
 func _on_ShootSpawnTimer_timeout():
-
+	# increase spawn frequency from 2 seg down to 800 ms, 50 ms at a time
+	$ShootSpawnTimer.wait_time = max(0.8, $ShootSpawnTimer.wait_time - 0.05)
+	
 	$ShootPath/ShootSpawnLocation.offset = randi()
 
 	var shoot = Weapon.instance()
