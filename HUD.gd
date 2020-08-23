@@ -15,6 +15,7 @@ const messagesByMinPoints = [
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$StartScreen.show()
+	$TutorialScreen.hide()
 	$PauseScreen.hide()
 	$GameScreen.hide()
 	$EndScreen.hide()
@@ -34,6 +35,7 @@ func update_score(score):
 
 func end_game(points):
 	$StartScreen.hide()
+	$TutorialScreen.hide()
 	$PauseScreen.hide()
 	$GameScreen.hide()
 	$EndScreen.show()
@@ -46,6 +48,16 @@ func end_game(points):
 
 func _start_screen():
 	$StartScreen.show()
+	$TutorialScreen.hide()
+	$PauseScreen.hide()
+	$GameScreen.hide()
+	$EndScreen.hide()
+	$OptionsScreen.hide()
+
+
+func _start_tutorial():
+	$StartScreen.hide()
+	$TutorialScreen.show()
 	$PauseScreen.hide()
 	$GameScreen.hide()
 	$EndScreen.hide()
@@ -54,6 +66,7 @@ func _start_screen():
 
 func _start_game():
 	$StartScreen.hide()
+	$TutorialScreen.hide()
 	$PauseScreen.hide()
 	$GameScreen.show()
 	$EndScreen.hide()
@@ -71,7 +84,11 @@ func _pause_game():
 			$PauseScreen.hide()	
 	
 func _on_StartGameButton_pressed():
-	_start_game()
+
+	if get_parent().count_tries > 0:
+		_start_game()
+	else:
+		_start_tutorial()
 
 
 func _on_RestartButton_pressed():
@@ -102,7 +119,11 @@ func _on_GameOptionsButton_pressed():
 
 func _on_MusicSlider_value_changed(value):
 	emit_signal("change_music_volume",value)
-	
+
 
 func _on_SoundEffectSlider_value_changed(value):
 	emit_signal("change_sound_volume",value)
+
+
+func _on_FinishTutorialButton_pressed():
+	_start_game()

@@ -214,6 +214,106 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="TutorialScreen" type="Node2D" parent="."]
+
+[node name="LabelControls" type="Label" parent="TutorialScreen"]
+margin_left = 112.0
+margin_top = 29.0
+margin_right = 676.0
+margin_bottom = 73.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_pivot_offset = Vector2( 282, 22 )
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.258824, 0, 0, 1 )
+text = "Controls"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LabelControlBed" type="Label" parent="TutorialScreen"]
+margin_left = 36.0
+margin_top = 166.0
+margin_right = 402.0
+margin_bottom = 210.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_pivot_offset = Vector2( 178, 22 )
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.258824, 0, 0, 1 )
+text = "W, A, S, D, Arrows:"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LabelMoveBed" type="Label" parent="TutorialScreen"]
+margin_left = 1013.0
+margin_top = 166.0
+margin_right = 197.0
+margin_bottom = 210.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_pivot_offset = Vector2( 96, 22 )
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.258824, 0, 0, 1 )
+text = "Move Bed"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LabelMoveSoldier" type="Label" parent="TutorialScreen"]
+margin_left = 490.0
+margin_top = 232.0
+margin_right = 738.0
+margin_bottom = 276.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_pivot_offset = Vector2( 124, 22 )
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.258824, 0, 0, 1 )
+text = "Move Soldier"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LabelControlSoldier" type="Label" parent="TutorialScreen"]
+margin_left = 36.0
+margin_top = 232.0
+margin_right = 402.0
+margin_bottom = 276.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_pivot_offset = Vector2( 178, 22 )
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.258824, 0, 0, 1 )
+text = "Mouse:"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FinishTutorialButton" type="Button" parent="TutorialScreen"]
+margin_left = 358.72
+margin_top = 501.0
+margin_right = 438.72
+margin_bottom = 531.0
+rect_pivot_offset = Vector2( 40, 18 )
+custom_styles/hover = SubResource( 2 )
+custom_styles/pressed = SubResource( 3 )
+custom_styles/normal = SubResource( 4 )
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+shortcut_in_tooltip = false
+text = "Start"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="EndScreen" type="Node2D" parent="."]
 
 [node name="EndGameMessageLabel" type="Label" parent="EndScreen"]
@@ -325,6 +425,7 @@ __meta__ = {
 [connection signal="value_changed" from="OptionsScreen/MusicSlider" to="." method="_on_MusicSlider_value_changed"]
 [connection signal="value_changed" from="OptionsScreen/SoundEffectSlider" to="." method="_on_SoundEffectSlider_value_changed"]
 [connection signal="pressed" from="OptionsScreen/MainMenuButton" to="." method="_on_MainMenuButton_pressed"]
+[connection signal="pressed" from="TutorialScreen/FinishTutorialButton" to="." method="_on_FinishTutorialButton_pressed"]
 [connection signal="pressed" from="EndScreen/RestartGameButton" to="." method="_on_RestartButton_pressed"]
 [connection signal="pressed" from="EndScreen/MainMenuButton" to="." method="_on_MainMenuButton_pressed"]
 [connection signal="pressed" from="EndScreen/QuitGameButton" to="." method="_on_QuitGameButton_pressed"]

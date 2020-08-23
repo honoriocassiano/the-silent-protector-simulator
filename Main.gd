@@ -3,6 +3,7 @@ extends Node
 export (PackedScene) var Weapon
 export var soldier_distance_from_bed = 100.0
 
+export var count_tries = 0
 export var final_weapon_spawn_freq = 0.8  # in seconds
 export var weapon_spawn_decrement = 0.05  # in seconds
 
@@ -39,6 +40,7 @@ func _exit_main_menu():
 func _new_game():
 
 	score = 0
+	count_tries += 1
 
 	$Bed.start()
 	$Soldier.start()
