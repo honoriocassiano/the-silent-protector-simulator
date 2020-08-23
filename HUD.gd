@@ -1,5 +1,6 @@
 extends CanvasLayer
 
+signal exit_main_menu()
 signal start_game()
 signal exit_game()
 
@@ -61,3 +62,9 @@ func _on_RestartButton_pressed():
 
 func _on_QuitGameButton_pressed():
 	emit_signal("exit_game")
+
+
+func _on_MainMenuButton_pressed():
+	_start_screen()
+	
+	emit_signal("exit_main_menu")

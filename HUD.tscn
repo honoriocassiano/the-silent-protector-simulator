@@ -40,6 +40,7 @@ follow_viewport_enable = true
 script = ExtResource( 2 )
 
 [node name="StartScreen" type="Node2D" parent="."]
+visible = false
 
 [node name="GameTitleLabel" type="Label" parent="StartScreen"]
 margin_left = 111.5
@@ -93,7 +94,6 @@ __meta__ = {
 }
 
 [node name="EndScreen" type="Node2D" parent="."]
-visible = false
 
 [node name="EndGameMessageLabel" type="Label" parent="EndScreen"]
 margin_left = 111.5
@@ -143,9 +143,25 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="MainMenuButton" type="Button" parent="EndScreen"]
+margin_left = 320.0
+margin_top = 450.0
+margin_right = 480.0
+margin_bottom = 480.0
+rect_pivot_offset = Vector2( 80, 17 )
+custom_styles/hover = SubResource( 8 )
+custom_styles/pressed = SubResource( 9 )
+custom_styles/normal = SubResource( 10 )
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "Main Menu"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="QuitGameButton" type="Button" parent="EndScreen"]
 margin_left = 358.72
-margin_top = 452.0
+margin_top = 501.0
 margin_right = 438.72
 margin_bottom = 482.0
 rect_pivot_offset = Vector2( 40, 18 )
@@ -181,4 +197,5 @@ __meta__ = {
 [connection signal="pressed" from="StartScreen/StartGameButton" to="." method="_on_StartGameButton_pressed"]
 [connection signal="pressed" from="StartScreen/QuitGameButton" to="." method="_on_QuitGameButton_pressed"]
 [connection signal="pressed" from="EndScreen/RestartGameButton" to="." method="_on_RestartButton_pressed"]
+[connection signal="pressed" from="EndScreen/MainMenuButton" to="." method="_on_MainMenuButton_pressed"]
 [connection signal="pressed" from="EndScreen/QuitGameButton" to="." method="_on_ExitGameButton_pressed"]

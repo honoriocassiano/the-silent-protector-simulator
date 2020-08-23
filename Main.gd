@@ -18,6 +18,24 @@ func _ready():
 #func _process(delta):
 #	pass
 
+func _exit_main_menu():
+	$InicialScreenMusic.play()
+
+	$BackgroundMusic.stop()
+	$BackgroundSound.stop()
+	$GameOverScream.stop()
+	$GameOverMusic.stop()
+	
+	$ShootSpawnTimer.stop()
+	$ScoreTimer.stop()
+
+#	Delete all the shoots that still active
+	get_tree().call_group("shoots", "queue_free")
+
+	$Bed.hide()
+	$Soldier.hide()
+
+
 func _new_game():
 
 	score = 0
@@ -122,3 +140,7 @@ func _on_ScoreTimer_timeout():
 
 func _on_HUD_exit_game():
 	get_tree().quit()
+
+
+func _on_HUD_exit_main_menu():
+	_exit_main_menu()
