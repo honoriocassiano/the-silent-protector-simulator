@@ -92,6 +92,7 @@ text = "Quit"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
 [node name="PauseScreen" type="Node2D" parent="."]
 
 [node name="ColorRect" type="ColorRect" parent="PauseScreen"]
