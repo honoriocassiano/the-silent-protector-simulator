@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://fonts/Xolonium-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://HUD.gd" type="Script" id=2]
@@ -34,6 +34,12 @@ bg_color = Color( 0.141176, 0, 0, 1 )
 
 [sub_resource type="StyleBoxFlat" id=10]
 bg_color = Color( 0.258824, 0, 0, 1 )
+
+[sub_resource type="InputEventAction" id=11]
+action = "ui_select"
+
+[sub_resource type="ShortCut" id=12]
+shortcut = SubResource( 11 )
 
 [node name="CanvasLayer" type="CanvasLayer"]
 follow_viewport_enable = true
@@ -88,7 +94,6 @@ custom_styles/normal = SubResource( 4 )
 custom_fonts/font = SubResource( 5 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 shortcut_in_tooltip = false
-shortcut = SubResource( 7 )
 text = "Quit"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -168,6 +173,7 @@ custom_styles/normal = SubResource( 10 )
 custom_fonts/font = SubResource( 5 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 shortcut_in_tooltip = false
+shortcut = SubResource( 12 )
 text = "Continue"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -202,7 +208,6 @@ custom_styles/normal = SubResource( 4 )
 custom_fonts/font = SubResource( 5 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 shortcut_in_tooltip = false
-shortcut = SubResource( 7 )
 text = "Quit"
 __meta__ = {
 "_edit_use_anchors_": false
