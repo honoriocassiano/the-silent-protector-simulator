@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://fonts/Xolonium-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://HUD.gd" type="Script" id=2]
@@ -35,11 +35,19 @@ bg_color = Color( 0.141176, 0, 0, 1 )
 [sub_resource type="StyleBoxFlat" id=10]
 bg_color = Color( 0.258824, 0, 0, 1 )
 
-[sub_resource type="InputEventAction" id=11]
+[sub_resource type="DynamicFont" id=11]
+size = 25
+font_data = ExtResource( 1 )
+
+[sub_resource type="InputEventAction" id=12]
 action = "ui_select"
 
-[sub_resource type="ShortCut" id=12]
-shortcut = SubResource( 11 )
+[sub_resource type="ShortCut" id=13]
+shortcut = SubResource( 12 )
+
+[sub_resource type="DynamicFont" id=14]
+size = 20
+font_data = ExtResource( 1 )
 
 [node name="CanvasLayer" type="CanvasLayer"]
 follow_viewport_enable = true
@@ -348,6 +356,23 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="HighscoreLabel" type="Label" parent="EndScreen"]
+visible = false
+margin_left = 111.0
+margin_top = 295.919
+margin_right = 679.743
+margin_bottom = 339.919
+grow_horizontal = 2
+grow_vertical = 2
+rect_pivot_offset = Vector2( 282, 22 )
+custom_fonts/font = SubResource( 11 )
+custom_colors/font_color = Color( 0.258824, 0, 0, 1 )
+text = "New best!"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="RestartGameButton" type="Button" parent="EndScreen"]
 anchor_right = 60.0
 margin_left = 335.0
@@ -361,7 +386,7 @@ custom_styles/normal = SubResource( 10 )
 custom_fonts/font = SubResource( 5 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 shortcut_in_tooltip = false
-shortcut = SubResource( 12 )
+shortcut = SubResource( 13 )
 text = "Continue"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -414,6 +439,23 @@ rect_pivot_offset = Vector2( 282, 22 )
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0.258824, 0, 0, 1 )
 text = "Score: "
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HighscoreLabel" type="Label" parent="GameScreen"]
+margin_left = 112.0
+margin_top = 61.0
+margin_right = 676.0
+margin_bottom = 105.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_pivot_offset = Vector2( 282, 22 )
+custom_fonts/font = SubResource( 14 )
+custom_colors/font_color = Color( 0.258824, 0, 0, 1 )
+text = "Best: "
 align = 1
 valign = 1
 __meta__ = {
