@@ -125,8 +125,14 @@ func _end_game():
 	$GameOverScream.play()
 	$GameOverMusic.play()
 	
-	if highest_score == null or score > highest_score:
+	if highest_score == null:
+		$HUD/EndScreen/HighscoreLabel.hide()
 		highest_score = score
+	elif score > highest_score:
+		$HUD/EndScreen/HighscoreLabel.show()
+		highest_score = score
+	else:
+		$HUD/EndScreen/HighscoreLabel.hide()
 	
 	$HUD.end_game(score)
 
