@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 1.98084, 5.54624 )
 
-[node name="Area2D" type="RigidBody2D" groups=[
+[node name="RigidBody2D" type="RigidBody2D" groups=[
 "shoots",
 ]]
 collision_layer = 2
