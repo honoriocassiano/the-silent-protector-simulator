@@ -3,6 +3,9 @@ extends Node
 export (PackedScene) var Weapon
 export var soldier_distance_from_bed = 100.0
 
+export var final_weapon_spawn_freq = 0.8  # in seconds
+export var weapon_spawn_decrement = 0.05  # in seconds
+
 var score
 
 # Called when the node enters the scene tree for the first time.
@@ -38,7 +41,9 @@ func _new_game():
 
 func _on_ShootSpawnTimer_timeout():
 	# increase spawn frequency from 2 seg down to 800 ms, 50 ms at a time
-	$ShootSpawnTimer.wait_time = max(0.8, $ShootSpawnTimer.wait_time - 0.05)
+	$ShootSpawnTimer.wait_time = \
+		max(final_weapon_spawn_freq, 
+			$ShootSpawnTimer.wait_time - weapon_spawn_decrement)
 	
 	$ShootPath/ShootSpawnLocation.offset = randi()
 
