@@ -235,4 +235,4 @@ __meta__ = {
 [connection signal="pressed" from="StartScreen/QuitGameButton" to="." method="_on_QuitGameButton_pressed"]
 [connection signal="pressed" from="EndScreen/RestartGameButton" to="." method="_on_RestartButton_pressed"]
 [connection signal="pressed" from="EndScreen/MainMenuButton" to="." method="_on_MainMenuButton_pressed"]
-[connection signal="pressed" from="EndScreen/QuitGameButton" to="." method="_on_ExitGameButton_pressed"]
+[connection signal="pressed" from="EndScreen/QuitGameButton" to="." method="_on_QuitGameButton_pressed"]

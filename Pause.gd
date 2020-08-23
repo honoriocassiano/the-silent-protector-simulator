@@ -1,7 +1,6 @@
 extends Node
 
 signal pause()
-signal unpause()
 
 func _ready():
 	pass
