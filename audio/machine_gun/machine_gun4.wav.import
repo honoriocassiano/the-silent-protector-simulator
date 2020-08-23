@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/machine_gun4.wav-626015044c3fadcdd8475d5989355f3c.sample"
+
+[deps]
+
+source_file="res://audio/machine_gun/machine_gun4.wav"
+dest_files=[ "res://.import/machine_gun4.wav-626015044c3fadcdd8475d5989355f3c.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

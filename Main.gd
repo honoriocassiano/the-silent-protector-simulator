@@ -7,7 +7,7 @@ var score
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-
+	$InicialScreenMusic.play()
 	randomize()
 
 
@@ -21,7 +21,15 @@ func _new_game():
 
 	$Bed.start()
 	$Soldier.start()
-
+	#stop existing music when starting or restarting the game
+	$InicialScreenMusic.stop()
+	$GameOverMusic.stop()
+	$GameOverScream.stop()
+	
+	#start the game music and background
+	$BackgroundMusic.play()
+	$BackgroundSound.play()
+	
 	$ShootSpawnTimer.start()
 	$ScoreTimer.start()
 
@@ -83,7 +91,12 @@ func _end_game():
 
 	$Bed.hide()
 	$Soldier.hide()
-
+	#stop the game music and starts the game over music
+	$BackgroundMusic.stop()
+	$BackgroundSound.stop()
+	$GameOverScream.play()
+	$GameOverMusic.play()
+	
 	$HUD.end_game(score)
 
 
