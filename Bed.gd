@@ -6,22 +6,20 @@ var screen_size
 signal game_over()
 
 func start():
+	
+	screen_size = get_viewport_rect().size
+	
+	position.x = screen_size.x / 2
+	position.y = screen_size.y / 2
+	
 	# Show when game starts
 	show()
+
 
 func _ready():
 	# Hide at start screen
 	hide()
 
-	screen_size = get_viewport_rect().size
-	
-	position.x = screen_size.x / 3
-	position.y = screen_size.y / 2
-	
-	
-	
-#	TODO Hide when game start
-#	hide()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
