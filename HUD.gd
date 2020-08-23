@@ -1,6 +1,7 @@
 extends CanvasLayer
 
 signal start_game()
+signal exit_game()
 
 const messagesByMinPoints = [
 	[50, "The army is proud of you!"],
@@ -56,3 +57,7 @@ func _on_StartGameButton_pressed():
 
 func _on_RestartButton_pressed():
 	_start_game()
+
+
+func _on_QuitGameButton_pressed():
+	emit_signal("exit_game")

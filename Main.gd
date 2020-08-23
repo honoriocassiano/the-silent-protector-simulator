@@ -118,3 +118,7 @@ func _on_ScoreTimer_timeout():
 	score += 1
 
 	$HUD.update_score(score)
+
+
+func _on_HUD_exit_game():
+	get_tree().quit()
