@@ -1,6 +1,8 @@
 extends CanvasLayer
 
+signal exit_main_menu()
 signal start_game()
+signal exit_game()
 
 const messagesByMinPoints = [
 	[50, "The army is proud of you!"],
@@ -74,3 +76,11 @@ func _on_GameStateControler_pause():
 	_pause_game()
 
 
+func _on_QuitGameButton_pressed():
+	emit_signal("exit_game")
+
+
+func _on_MainMenuButton_pressed():
+	_start_screen()
+	
+	emit_signal("exit_main_menu")
