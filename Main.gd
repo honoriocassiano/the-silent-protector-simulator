@@ -1,6 +1,6 @@
 extends Node
 
-export (PackedScene) var Shoot
+export (PackedScene) var Weapon
 export var soldier_distance_from_bed = 100.0
 
 var score
@@ -40,7 +40,9 @@ func _on_ShootSpawnTimer_timeout():
 
 	$ShootPath/ShootSpawnLocation.offset = randi()
 
-	var shoot = Shoot.instance()
+	var shoot = Weapon.instance()
+	
+	shoot.init()
 
 	var spawnPosition = $ShootPath/ShootSpawnLocation.position
 	
@@ -69,7 +71,7 @@ func _on_ShootSpawnTimer_timeout():
 
 	shoot.position = spawnPosition
 	shoot.rotation = finalDirection
-	shoot.linear_velocity = -Vector2(0, 150).rotated(finalDirection)
+	shoot.linear_velocity = -Vector2(0, shoot.speed).rotated(finalDirection)
 #	shoot.linear_velocity = Vector2(rand_range(150, 250), 0).rotated(direction)
 #	shoot.linear_velocity = shoot.linear_velocity.rotated(direction)
 	

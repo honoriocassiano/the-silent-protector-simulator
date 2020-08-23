@@ -4,7 +4,7 @@
 [ext_resource path="res://HUD.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Soldier.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Main.gd" type="Script" id=4]
-[ext_resource path="res://Shoot.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Weapon.tscn" type="PackedScene" id=5]
 [ext_resource path="res://audio/music/background.ogg" type="AudioStream" id=6]
 [ext_resource path="res://audio/music/Adventures of Flying Jack(inicial_screen).ogg" type="AudioStream" id=7]
 [ext_resource path="res://audio/music/Strength of the Titans(game start).ogg" type="AudioStream" id=8]
@@ -25,7 +25,7 @@ _data = {
 
 [node name="Main" type="Node"]
 script = ExtResource( 4 )
-Shoot = ExtResource( 5 )
+Weapon = ExtResource( 5 )
 
 [node name="TextureRect" type="TextureRect" parent="."]
 anchor_right = 1.0
