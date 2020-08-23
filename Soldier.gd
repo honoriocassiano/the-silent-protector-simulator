@@ -88,6 +88,4 @@ func keep_in_circumference():
 
 
 func _on_RigidBody2D_body_entered(body):
-	
-	# TODO Play damage sound
-	body.queue_free()
+	body.on_contact()

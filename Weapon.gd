@@ -40,3 +40,22 @@ func init():
 func _on_VisibilityNotifier2D_screen_exited():
 	# Delete object if it leaves the screeen
 	queue_free()
+
+
+func on_contact():
+	$OnContactAnimation.animation = on_contact
+	$OnContactAnimation.frame = 0
+	
+	$Sprite.hide()
+	$OnContactAnimation.show()
+	
+	$OnContactAnimation.rotation -= PI
+	linear_velocity = Vector2(0, 0)
+	
+	$OnContactAnimation.play()
+		
+	yield($OnContactAnimation, "animation_finished")
+	
+	print("cabou mané")
+	
+	queue_free()
