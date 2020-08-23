@@ -6,6 +6,7 @@ export var soldier_distance_from_bed = 100.0
 export var final_weapon_spawn_freq = 0.8  # in seconds
 export var weapon_spawn_decrement = 0.05  # in seconds
 
+var highest_score = null
 var score
 
 # Called when the node enters the scene tree for the first time.
@@ -55,6 +56,12 @@ func _new_game():
 	$ScoreTimer.start()
 
 	$HUD.update_score(score)
+	
+	if highest_score != null:
+		$HUD/GameScreen/HighscoreLabel.text = "Best: %d" % highest_score
+		$HUD/GameScreen/HighscoreLabel.show()
+	else:
+		$HUD/GameScreen/HighscoreLabel.hide()
 
 
 func _on_ShootSpawnTimer_timeout():
@@ -123,6 +130,15 @@ func _end_game():
 	$BackgroundSound.stop()
 	$GameOverScream.play()
 	$GameOverMusic.play()
+	
+	if highest_score == null:
+		$HUD/EndScreen/HighscoreLabel.hide()
+		highest_score = score
+	elif score > highest_score:
+		$HUD/EndScreen/HighscoreLabel.show()
+		highest_score = score
+	else:
+		$HUD/EndScreen/HighscoreLabel.hide()
 	
 	$HUD.end_game(score)
 
