@@ -2,7 +2,8 @@ extends Area2D
 
 #var bedPosition = Vector2()
 
-export var speed = 10
+export var speed = 7.5
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
