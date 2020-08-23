@@ -326,6 +326,38 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="LabelP" type="Label" parent="TutorialScreen"]
+margin_left = 490.0
+margin_top = 312.0
+margin_right = 738.0
+margin_bottom = 356.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_pivot_offset = Vector2( 124, 22 )
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.258824, 0, 0, 1 )
+text = "Pause"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LabelPause2" type="Label" parent="TutorialScreen"]
+margin_left = 36.0
+margin_top = 312.0
+margin_right = 402.0
+margin_bottom = 356.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_pivot_offset = Vector2( 178, 22 )
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.258824, 0, 0, 1 )
+text = "P:"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="FinishTutorialButton" type="Button" parent="TutorialScreen"]
 margin_left = 358.72
 margin_top = 501.0
