@@ -21,7 +21,7 @@ animations = [ {
 "frames": [ ExtResource( 7 ), ExtResource( 7 ) ],
 "loop": false,
 "name": "blood-spill",
-"speed": 5.0
+"speed": 15.0
 } ]
 
 [node name="RigidBody2D" type="RigidBody2D" groups=[
