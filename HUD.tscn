@@ -92,8 +92,34 @@ text = "Quit"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+[node name="PauseScreen" type="Node2D" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="PauseScreen"]
+margin_right = 895.0
+margin_bottom = 682.0
+color = Color( 0.117647, 0.0980392, 0.0980392, 0.827451 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PointsLabel2" type="Label" parent="PauseScreen"]
+margin_left = 111.0
+margin_top = 247.919
+margin_right = 679.743
+margin_bottom = 291.919
+grow_horizontal = 2
+grow_vertical = 2
+rect_pivot_offset = Vector2( 282, 22 )
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "Paused"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="EndScreen" type="Node2D" parent="."]
+visible = false
 
 [node name="EndGameMessageLabel" type="Label" parent="EndScreen"]
 margin_left = 111.5
@@ -138,7 +164,7 @@ custom_styles/pressed = SubResource( 9 )
 custom_styles/normal = SubResource( 10 )
 custom_fonts/font = SubResource( 5 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
-text = "Restart"
+text = "Continue"
 __meta__ = {
 "_edit_use_anchors_": false
 }
