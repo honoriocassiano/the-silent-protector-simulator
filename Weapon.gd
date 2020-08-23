@@ -56,6 +56,4 @@ func on_contact():
 		
 	yield($OnContactAnimation, "animation_finished")
 	
-	print("cabou mané")
-	
 	queue_free()
