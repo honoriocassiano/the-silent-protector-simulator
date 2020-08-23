@@ -18,7 +18,7 @@ func _ready():
 	position.x = screen_size.x / 3
 	position.y = screen_size.y / 2
 	
-	emit_signal("position_ready", position)
+	
 	
 #	TODO Hide when game start
 #	hide()
