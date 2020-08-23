@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://fonts/Xolonium-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://HUD.gd" type="Script" id=2]
@@ -7,31 +7,59 @@
 size = 36
 font_data = ExtResource( 1 )
 
-[sub_resource type="StyleBoxFlat" id=6]
-bg_color = Color( 0.38, 0, 0, 1 )
+[sub_resource type="DynamicFont" id=2]
+size = 18
+font_data = ExtResource( 1 )
 
-[sub_resource type="StyleBoxFlat" id=7]
-bg_color = Color( 0.14, 0, 0, 1 )
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.380392, 0, 0, 1 )
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.141176, 0, 0, 1 )
 
 [sub_resource type="StyleBoxFlat" id=5]
 bg_color = Color( 0.258824, 0, 0, 1 )
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=6]
 size = 24
 font_data = ExtResource( 1 )
 
-[sub_resource type="InputEventAction" id=3]
+[sub_resource type="InputEventAction" id=7]
 action = "ui_select"
 
-[sub_resource type="ShortCut" id=4]
-shortcut = SubResource( 3 )
+[sub_resource type="ShortCut" id=8]
+shortcut = SubResource( 7 )
+
+[sub_resource type="StyleBoxFlat" id=9]
+bg_color = Color( 0.380392, 0, 0, 1 )
+
+[sub_resource type="StyleBoxFlat" id=10]
+bg_color = Color( 0.141176, 0, 0, 1 )
+
+[sub_resource type="StyleBoxFlat" id=11]
+bg_color = Color( 0.258824, 0, 0, 1 )
+
+[sub_resource type="InputEventAction" id=15]
+action = "ui_select"
+
+[sub_resource type="ShortCut" id=16]
+shortcut = SubResource( 15 )
+
+[sub_resource type="DynamicFont" id=12]
+size = 25
+font_data = ExtResource( 1 )
+
+[sub_resource type="InputEventAction" id=13]
+action = "ui_select"
+
+[sub_resource type="ShortCut" id=14]
+shortcut = SubResource( 13 )
 
 [node name="CanvasLayer" type="CanvasLayer"]
 follow_viewport_enable = true
 script = ExtResource( 2 )
 
 [node name="StartScreen" type="Node2D" parent="."]
-visible = false
 
 [node name="GameTitleLabel" type="Label" parent="StartScreen"]
 margin_left = 111.5
@@ -50,18 +78,304 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="DevelopByLabel" type="Label" parent="StartScreen"]
+margin_left = 592.956
+margin_top = 425.96
+margin_right = 758.956
+margin_bottom = 563.96
+grow_horizontal = 2
+grow_vertical = 2
+rect_pivot_offset = Vector2( 83, 69 )
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.258824, 0, 0, 1 )
+text = "Developed by:
+
+diogo_vieira
+kogauga
+ronaldosvieira"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="StartGameButton" type="Button" parent="StartScreen"]
-margin_left = 358.72
+margin_left = 360.0
 margin_top = 396.85
-margin_right = 438.72
+margin_right = 438.0
 margin_bottom = 432.85
 rect_pivot_offset = Vector2( 40, 18 )
-custom_styles/hover = SubResource( 6 )
-custom_styles/pressed = SubResource( 7 )
+custom_styles/hover = SubResource( 3 )
+custom_styles/pressed = SubResource( 4 )
 custom_styles/normal = SubResource( 5 )
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
-shortcut = SubResource( 4 )
+shortcut_in_tooltip = false
+shortcut = SubResource( 8 )
+text = "Start"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GameOptionsButton" type="Button" parent="StartScreen"]
+margin_left = 339.0
+margin_top = 449.63
+margin_right = 461.0
+margin_bottom = 485.63
+rect_pivot_offset = Vector2( 51, 18 )
+custom_styles/hover = SubResource( 3 )
+custom_styles/pressed = SubResource( 4 )
+custom_styles/normal = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "Options"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="QuitGameButton" type="Button" parent="StartScreen"]
+margin_left = 360.0
+margin_top = 503.0
+margin_right = 438.72
+margin_bottom = 533.0
+rect_pivot_offset = Vector2( 40, 18 )
+custom_styles/hover = SubResource( 3 )
+custom_styles/pressed = SubResource( 4 )
+custom_styles/normal = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+shortcut_in_tooltip = false
+text = "Quit"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PauseScreen" type="Node2D" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="PauseScreen"]
+margin_right = 895.0
+margin_bottom = 682.0
+color = Color( 0.117647, 0.0980392, 0.0980392, 0.827451 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PointsLabel2" type="Label" parent="PauseScreen"]
+margin_left = 111.0
+margin_top = 247.919
+margin_right = 679.743
+margin_bottom = 291.919
+grow_horizontal = 2
+grow_vertical = 2
+rect_pivot_offset = Vector2( 282, 22 )
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "Paused"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="OptionsScreen" type="Node2D" parent="."]
+
+[node name="MusicSlider" type="HSlider" parent="OptionsScreen"]
+margin_left = 213.0
+margin_top = 179.0
+margin_right = 360.0
+margin_bottom = 203.0
+min_value = -60.0
+max_value = 5.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SoundEffectSlider" type="HSlider" parent="OptionsScreen"]
+margin_left = 214.0
+margin_top = 250.0
+margin_right = 361.0
+margin_bottom = 274.0
+min_value = -60.0
+max_value = 5.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LabelMusic" type="Label" parent="OptionsScreen"]
+margin_left = 63.0
+margin_top = 166.0
+margin_right = 197.0
+margin_bottom = 210.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_pivot_offset = Vector2( 282, 22 )
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.258824, 0, 0, 1 )
+text = "Music: "
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LabelSoundEffect" type="Label" parent="OptionsScreen"]
+margin_left = 63.0
+margin_top = 238.0
+margin_right = 206.0
+margin_bottom = 282.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_pivot_offset = Vector2( 282, 22 )
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.258824, 0, 0, 1 )
+text = "Sound: "
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MainMenuButton" type="Button" parent="OptionsScreen"]
+margin_left = 320.0
+margin_top = 450.0
+margin_right = 480.0
+margin_bottom = 480.0
+rect_pivot_offset = Vector2( 80, 17 )
+custom_styles/hover = SubResource( 9 )
+custom_styles/pressed = SubResource( 10 )
+custom_styles/normal = SubResource( 11 )
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "Back"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TutorialScreen" type="Node2D" parent="."]
+
+[node name="LabelControls" type="Label" parent="TutorialScreen"]
+margin_left = 112.0
+margin_top = 29.0
+margin_right = 676.0
+margin_bottom = 73.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_pivot_offset = Vector2( 282, 22 )
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.258824, 0, 0, 1 )
+text = "Controls"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LabelControlBed" type="Label" parent="TutorialScreen"]
+margin_left = 36.0
+margin_top = 166.0
+margin_right = 402.0
+margin_bottom = 210.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_pivot_offset = Vector2( 178, 22 )
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.258824, 0, 0, 1 )
+text = "W, A, S, D, Arrows:"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LabelMoveBed" type="Label" parent="TutorialScreen"]
+margin_left = 1013.0
+margin_top = 166.0
+margin_right = 197.0
+margin_bottom = 210.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_pivot_offset = Vector2( 96, 22 )
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.258824, 0, 0, 1 )
+text = "Move Bed"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LabelMoveSoldier" type="Label" parent="TutorialScreen"]
+margin_left = 490.0
+margin_top = 232.0
+margin_right = 738.0
+margin_bottom = 276.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_pivot_offset = Vector2( 124, 22 )
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.258824, 0, 0, 1 )
+text = "Move Soldier"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LabelControlSoldier" type="Label" parent="TutorialScreen"]
+margin_left = 36.0
+margin_top = 232.0
+margin_right = 402.0
+margin_bottom = 276.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_pivot_offset = Vector2( 178, 22 )
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.258824, 0, 0, 1 )
+text = "Mouse:"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LabelP" type="Label" parent="TutorialScreen"]
+margin_left = 490.0
+margin_top = 312.0
+margin_right = 738.0
+margin_bottom = 356.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_pivot_offset = Vector2( 124, 22 )
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.258824, 0, 0, 1 )
+text = "Pause"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LabelPause2" type="Label" parent="TutorialScreen"]
+margin_left = 36.0
+margin_top = 312.0
+margin_right = 402.0
+margin_bottom = 356.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_pivot_offset = Vector2( 178, 22 )
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.258824, 0, 0, 1 )
+text = "P:"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FinishTutorialButton" type="Button" parent="TutorialScreen"]
+margin_left = 358.72
+margin_top = 501.0
+margin_right = 438.72
+margin_bottom = 531.0
+rect_pivot_offset = Vector2( 40, 18 )
+custom_styles/hover = SubResource( 3 )
+custom_styles/pressed = SubResource( 4 )
+custom_styles/normal = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+shortcut_in_tooltip = false
+shortcut = SubResource( 16 )
 text = "Start"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -69,6 +383,27 @@ __meta__ = {
 
 [node name="EndScreen" type="Node2D" parent="."]
 visible = false
+
+[node name="DevelopByLabel" type="Label" parent="EndScreen"]
+margin_left = 592.956
+margin_top = 425.96
+margin_right = 758.956
+margin_bottom = 563.96
+grow_horizontal = 2
+grow_vertical = 2
+rect_pivot_offset = Vector2( 83, 69 )
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.258824, 0, 0, 1 )
+text = "Developed by:
+
+diogo_vieira
+kogauga
+ronaldosvieira"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="EndGameMessageLabel" type="Label" parent="EndScreen"]
 margin_left = 111.5
@@ -79,6 +414,7 @@ grow_horizontal = 2
 grow_vertical = 2
 rect_pivot_offset = Vector2( 282, 22 )
 custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.258824, 0, 0, 1 )
 text = "The Army is proud of you!"
 align = 1
 __meta__ = {
@@ -94,22 +430,125 @@ grow_horizontal = 2
 grow_vertical = 2
 rect_pivot_offset = Vector2( 282, 22 )
 custom_fonts/font = SubResource( 1 )
-text = "Points: "
+custom_colors/font_color = Color( 0.258824, 0, 0, 1 )
+text = "Score: "
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HighscoreLabel" type="Label" parent="EndScreen"]
+visible = false
+margin_left = 111.0
+margin_top = 295.919
+margin_right = 679.743
+margin_bottom = 339.919
+grow_horizontal = 2
+grow_vertical = 2
+rect_pivot_offset = Vector2( 282, 22 )
+custom_fonts/font = SubResource( 12 )
+custom_colors/font_color = Color( 0.258824, 0, 0, 1 )
+text = "New best!"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="RestartGameButton" type="Button" parent="EndScreen"]
+anchor_right = 60.0
+margin_left = 335.0
+margin_top = 397.0
+margin_right = 465.0
+margin_bottom = 431.0
+rect_pivot_offset = Vector2( 65, 17 )
+custom_styles/hover = SubResource( 9 )
+custom_styles/pressed = SubResource( 10 )
+custom_styles/normal = SubResource( 11 )
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+shortcut_in_tooltip = false
+shortcut = SubResource( 14 )
+text = "Continue"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MainMenuButton" type="Button" parent="EndScreen"]
+margin_left = 320.0
+margin_top = 450.0
+margin_right = 480.0
+margin_bottom = 480.0
+rect_pivot_offset = Vector2( 80, 17 )
+custom_styles/hover = SubResource( 9 )
+custom_styles/pressed = SubResource( 10 )
+custom_styles/normal = SubResource( 11 )
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+shortcut_in_tooltip = false
+text = "Main Menu"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="QuitGameButton" type="Button" parent="EndScreen"]
 margin_left = 358.72
-margin_top = 396.85
+margin_top = 501.0
 margin_right = 438.72
-margin_bottom = 432.85
+margin_bottom = 482.0
 rect_pivot_offset = Vector2( 40, 18 )
+custom_styles/hover = SubResource( 3 )
+custom_styles/pressed = SubResource( 4 )
+custom_styles/normal = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+shortcut_in_tooltip = false
+text = "Quit"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GameScreen" type="Node2D" parent="."]
+
+[node name="GameScoreLabel" type="Label" parent="GameScreen"]
+margin_left = 112.0
+margin_top = 29.0
+margin_right = 676.0
+margin_bottom = 73.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_pivot_offset = Vector2( 282, 22 )
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.258824, 0, 0, 1 )
+text = "Score: "
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HighscoreLabel" type="Label" parent="GameScreen"]
+margin_left = 112.0
+margin_top = 61.0
+margin_right = 676.0
+margin_bottom = 105.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_pivot_offset = Vector2( 282, 22 )
 custom_fonts/font = SubResource( 2 )
-text = "Restart"
+custom_colors/font_color = Color( 0.258824, 0, 0, 1 )
+text = "Best: "
+align = 1
+valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 [connection signal="pressed" from="StartScreen/StartGameButton" to="." method="_on_StartGameButton_pressed"]
+[connection signal="pressed" from="StartScreen/GameOptionsButton" to="." method="_on_GameOptionsButton_pressed"]
+[connection signal="pressed" from="StartScreen/QuitGameButton" to="." method="_on_QuitGameButton_pressed"]
+[connection signal="value_changed" from="OptionsScreen/MusicSlider" to="." method="_on_MusicSlider_value_changed"]
+[connection signal="value_changed" from="OptionsScreen/SoundEffectSlider" to="." method="_on_SoundEffectSlider_value_changed"]
+[connection signal="pressed" from="OptionsScreen/MainMenuButton" to="." method="_on_MainMenuButton_pressed"]
+[connection signal="pressed" from="TutorialScreen/FinishTutorialButton" to="." method="_on_FinishTutorialButton_pressed"]
 [connection signal="pressed" from="EndScreen/RestartGameButton" to="." method="_on_RestartButton_pressed"]
+[connection signal="pressed" from="EndScreen/MainMenuButton" to="." method="_on_MainMenuButton_pressed"]
+[connection signal="pressed" from="EndScreen/QuitGameButton" to="." method="_on_QuitGameButton_pressed"]

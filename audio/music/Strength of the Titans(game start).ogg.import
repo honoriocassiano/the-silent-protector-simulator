@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Strength of the Titans(game start).ogg-8a815e9dea4f27f6d068adfe4b20071d.oggstr"
+
+[deps]
+
+source_file="res://audio/music/Strength of the Titans(game start).ogg"
+dest_files=[ "res://.import/Strength of the Titans(game start).ogg-8a815e9dea4f27f6d068adfe4b20071d.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
