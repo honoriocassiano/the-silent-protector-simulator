@@ -4,7 +4,7 @@
 [ext_resource path="res://HUD.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Soldier.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Main.gd" type="Script" id=4]
-[ext_resource path="res://Shoot.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Weapon.tscn" type="PackedScene" id=5]
 
 [sub_resource type="Gradient" id=1]
 colors = PoolColorArray( 0.737255, 0.666667, 0.521569, 1, 0.917647, 0.894118, 0.768627, 1 )
@@ -20,7 +20,7 @@ _data = {
 
 [node name="Main" type="Node"]
 script = ExtResource( 4 )
-Shoot = ExtResource( 5 )
+Weapon = ExtResource( 5 )
 
 [node name="TextureRect" type="TextureRect" parent="."]
 anchor_right = 1.0
