@@ -56,6 +56,12 @@ func _new_game():
 	$ScoreTimer.start()
 
 	$HUD.update_score(score)
+	
+	if highest_score != null:
+		$HUD/GameScreen/HighscoreLabel.text = "Best: %d" % highest_score
+		$HUD/GameScreen/HighscoreLabel.show()
+	else:
+		$HUD/GameScreen/HighscoreLabel.hide()
 
 
 func _on_ShootSpawnTimer_timeout():
