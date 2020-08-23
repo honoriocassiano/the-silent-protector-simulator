@@ -1,10 +1,15 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Bed.tscn" type="PackedScene" id=1]
 [ext_resource path="res://HUD.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Soldier.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Main.gd" type="Script" id=4]
 [ext_resource path="res://Weapon.tscn" type="PackedScene" id=5]
+[ext_resource path="res://audio/music/background.ogg" type="AudioStream" id=6]
+[ext_resource path="res://audio/music/Adventures of Flying Jack(inicial_screen).ogg" type="AudioStream" id=7]
+[ext_resource path="res://audio/music/Strength of the Titans(game start).ogg" type="AudioStream" id=8]
+[ext_resource path="res://audio/screams/noooo(dramatic).wav" type="AudioStream" id=9]
+[ext_resource path="res://audio/music/Night Vigil(game over).ogg" type="AudioStream" id=10]
 
 [sub_resource type="Gradient" id=1]
 colors = PoolColorArray( 0.737255, 0.666667, 0.521569, 1, 0.917647, 0.894118, 0.768627, 1 )
@@ -38,6 +43,9 @@ __meta__ = {
 
 [node name="ShootSpawnTimer" type="Timer" parent="."]
 
+[node name="ScoreTimer" type="Timer" parent="."]
+wait_time = 0.5
+
 [node name="HUD" parent="." instance=ExtResource( 2 )]
 
 [node name="Bed" parent="." instance=ExtResource( 1 )]
@@ -52,6 +60,22 @@ curve = SubResource( 3 )
 [node name="ShootSpawnLocation" type="PathFollow2D" parent="ShootPath"]
 position = Vector2( -0.615845, -3.41257 )
 rotation = 0.00314968
+
+[node name="BackgroundSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+
+[node name="InicialScreenMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+
+[node name="GameOverMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
+
+[node name="GameOverScream" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
 [connection signal="timeout" from="ShootSpawnTimer" to="." method="_on_ShootSpawnTimer_timeout"]
+[connection signal="timeout" from="ScoreTimer" to="." method="_on_ScoreTimer_timeout"]
 [connection signal="start_game" from="HUD" to="." method="_on_HUD_start_game"]
 [connection signal="game_over" from="Bed" to="." method="_on_Bed_game_over"]

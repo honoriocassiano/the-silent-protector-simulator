@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/noooo(dramatic).wav-007c111ca814709cd67b3f53ee5f918c.sample"
+
+[deps]
+
+source_file="res://audio/screams/noooo(dramatic).wav"
+dest_files=[ "res://.import/noooo(dramatic).wav-007c111ca814709cd67b3f53ee5f918c.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

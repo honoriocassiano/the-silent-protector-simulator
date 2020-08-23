@@ -1,16 +1,14 @@
 extends Node
 
-#var bedPosition
-
 export (PackedScene) var Weapon
 export var soldier_distance_from_bed = 100.0
 
+var score
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
-
+	$InicialScreenMusic.play()
 	randomize()
-
-	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -19,12 +17,24 @@ func _ready():
 
 func _new_game():
 
+	score = 0
+
 	$Bed.start()
 	$Soldier.start()
-
+	#stop existing music when starting or restarting the game
+	$InicialScreenMusic.stop()
+	$GameOverMusic.stop()
+	$GameOverScream.stop()
+	
+	#start the game music and background
+	$BackgroundMusic.play()
+	$BackgroundSound.play()
+	
 	$ShootSpawnTimer.start()
+	$ScoreTimer.start()
 
-	pass
+	$HUD.update_score(score)
+
 
 func _on_ShootSpawnTimer_timeout():
 
@@ -75,19 +85,29 @@ func _on_HUD_start_game():
 
 func _end_game():
 
-#	TODO Count the points
-	var points = 60
-
 	$ShootSpawnTimer.stop()
+	$ScoreTimer.stop()
 
 #	Delete all the shoots that still active
 	get_tree().call_group("shoots", "queue_free")
 
 	$Bed.hide()
 	$Soldier.hide()
-
-	$HUD.end_game(points)
+	#stop the game music and starts the game over music
+	$BackgroundMusic.stop()
+	$BackgroundSound.stop()
+	$GameOverScream.play()
+	$GameOverMusic.play()
+	
+	$HUD.end_game(score)
 
 
 func _on_Bed_game_over():
 	_end_game()
+
+
+func _on_ScoreTimer_timeout():
+
+	score += 1
+
+	$HUD.update_score(score)
