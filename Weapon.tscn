@@ -12,6 +12,8 @@ extents = Vector2( 1.98084, 5.54624 )
 collision_layer = 2
 mass = 0.00102041
 gravity_scale = 0.0
+linear_damp = 0.0
+angular_damp = 0.0
 script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
