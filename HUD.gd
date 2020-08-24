@@ -6,11 +6,16 @@ signal exit_game()
 signal change_music_volume(value)
 signal change_sound_volume(value)
 
+const TUTORIAL_ORIGIN = {DEFAULT = 0, CONTROLS_MENU = 1}
 const messagesByMinPoints = [
-	[200, "Congratulations, you are a true Silent Protector!"],
-	[100, "The army is proud of you!"],
+	[100000, "Congratulations, that's the last mark.\nGo do something else."],
+	[50000, "Don't you have anything better to do?"],
+	[10000, "You sure have a lot of free time."],
+	[1000, "So you are a gamer, right?"],
+	[200, "Congratulations, you are a true\nSilent Protector!"],
+	[100, "The Protectors are proud of you!"],
 	[50, "You did OK, soldier."],
-	[0, "You failed the nation!"]
+	[0, "You failed as a Protector."]
 ]
 
 
@@ -22,6 +27,9 @@ func _ready():
 	$GameScreen.hide()
 	$EndScreen.hide()
 	$OptionsScreen.hide()
+	
+	$StartScreen/QuitGameButton.visible = OS.get_name() != "HTML5"
+	$EndScreen/QuitGameButton.visible = OS.get_name() != "HTML5"
 
 
 func _get_message(points):
@@ -57,14 +65,20 @@ func _start_screen():
 	$OptionsScreen.hide()
 
 
-func _start_tutorial():
+func _start_tutorial(origin):
 	$StartScreen.hide()
 	$TutorialScreen.show()
 	$PauseScreen.hide()
 	$GameScreen.hide()
 	$EndScreen.hide()
 	$OptionsScreen.hide()
-
+	
+	if origin == TUTORIAL_ORIGIN.DEFAULT:
+		$TutorialScreen.get_node("MainMenuButton").visible = false
+		$TutorialScreen.get_node("FinishTutorialButton").visible = true
+	else:
+		$TutorialScreen.get_node("FinishTutorialButton").visible = false
+		$TutorialScreen.get_node("MainMenuButton").visible = true
 
 func _start_game():
 	$StartScreen.hide()
@@ -90,7 +104,7 @@ func _on_StartGameButton_pressed():
 	if get_parent().count_tries > 0:
 		_start_game()
 	else:
-		_start_tutorial()
+		_start_tutorial(TUTORIAL_ORIGIN.DEFAULT)
 
 
 func _on_RestartButton_pressed():
@@ -129,3 +143,8 @@ func _on_SoundEffectSlider_value_changed(value):
 
 func _on_FinishTutorialButton_pressed():
 	_start_game()
+
+
+func _on_GameControlsButton_pressed():
+	var origin = TUTORIAL_ORIGIN.CONTROLS_MENU
+	_start_tutorial(origin)
