@@ -23,6 +23,9 @@ func _ready():
 	$GameScreen.hide()
 	$EndScreen.hide()
 	$OptionsScreen.hide()
+	
+	$StartScreen/QuitGameButton.visible = OS.get_name() != "HTML5"
+	$EndScreen/QuitGameButton.visible = OS.get_name() != "HTML5"
 
 
 func _get_message(points):
@@ -43,8 +46,6 @@ func end_game(points):
 	$GameScreen.hide()
 	$EndScreen.show()
 	$OptionsScreen.hide()
-	
-	$EndScreen/QuitGameButton.visible = OS.get_name() != "HTML5"
 
 #	Set messages
 	$EndScreen/EndGameMessageLabel.set_text(_get_message(points))
@@ -58,8 +59,6 @@ func _start_screen():
 	$GameScreen.hide()
 	$EndScreen.hide()
 	$OptionsScreen.hide()
-	
-	$StartScreen/QuitGameButton.visible = OS.get_name() != "HTML5"
 
 
 func _start_tutorial():
