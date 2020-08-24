@@ -4,6 +4,7 @@ export (PackedScene) var Weapon
 export var soldier_distance_from_bed = 100.0
 
 export var count_tries = 0
+var starting_weapon_spawn_freq = null
 export var final_weapon_spawn_freq = 0.8  # in seconds
 export var weapon_spawn_decrement = 0.05  # in seconds
 
@@ -14,6 +15,9 @@ var score
 func _ready():
 	$InicialScreenMusic.play()
 	randomize()
+	
+	# get the starting frequency for spawning weapons
+	starting_weapon_spawn_freq = $ShootSpawnTimer.wait_time
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -53,6 +57,9 @@ func _new_game():
 	#start the game music and background
 	$BackgroundMusic.play()
 	$BackgroundSound.play()
+	
+	# reset weapon spawn frequency
+	$ShootSpawnTimer.wait_time = starting_weapon_spawn_freq
 	
 	$ShootSpawnTimer.start()
 	$ScoreTimer.start()
