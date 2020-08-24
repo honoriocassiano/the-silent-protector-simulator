@@ -60,6 +60,7 @@ follow_viewport_enable = true
 script = ExtResource( 2 )
 
 [node name="StartScreen" type="Node2D" parent="."]
+visible = false
 
 [node name="GameTitleLabel" type="Label" parent="StartScreen"]
 margin_left = 111.5
@@ -133,11 +134,27 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="GameControlsButton" type="Button" parent="StartScreen"]
+margin_left = 339.0
+margin_top = 503.63
+margin_right = 461.0
+margin_bottom = 539.63
+rect_pivot_offset = Vector2( 51, 18 )
+custom_styles/hover = SubResource( 3 )
+custom_styles/pressed = SubResource( 4 )
+custom_styles/normal = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "Controls"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="QuitGameButton" type="Button" parent="StartScreen"]
 margin_left = 360.0
-margin_top = 503.0
+margin_top = 554.0
 margin_right = 438.72
-margin_bottom = 533.0
+margin_bottom = 584.0
 rect_pivot_offset = Vector2( 40, 18 )
 custom_styles/hover = SubResource( 3 )
 custom_styles/pressed = SubResource( 4 )
@@ -151,6 +168,7 @@ __meta__ = {
 }
 
 [node name="PauseScreen" type="Node2D" parent="."]
+visible = false
 
 [node name="ColorRect" type="ColorRect" parent="PauseScreen"]
 margin_right = 895.0
@@ -177,6 +195,7 @@ __meta__ = {
 }
 
 [node name="OptionsScreen" type="Node2D" parent="."]
+visible = false
 
 [node name="MusicSlider" type="HSlider" parent="OptionsScreen"]
 margin_left = 213.0
@@ -381,6 +400,22 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="MainMenuButton" type="Button" parent="TutorialScreen"]
+margin_left = 359.0
+margin_top = 541.0
+margin_right = 442.0
+margin_bottom = 571.0
+rect_pivot_offset = Vector2( 80, 17 )
+custom_styles/hover = SubResource( 9 )
+custom_styles/pressed = SubResource( 10 )
+custom_styles/normal = SubResource( 11 )
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "Back"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="EndScreen" type="Node2D" parent="."]
 visible = false
 
@@ -508,6 +543,7 @@ __meta__ = {
 }
 
 [node name="GameScreen" type="Node2D" parent="."]
+visible = false
 
 [node name="GameScoreLabel" type="Label" parent="GameScreen"]
 margin_left = 112.0
@@ -544,11 +580,13 @@ __meta__ = {
 }
 [connection signal="pressed" from="StartScreen/StartGameButton" to="." method="_on_StartGameButton_pressed"]
 [connection signal="pressed" from="StartScreen/GameOptionsButton" to="." method="_on_GameOptionsButton_pressed"]
+[connection signal="pressed" from="StartScreen/GameControlsButton" to="." method="_on_GameControlsButton_pressed"]
 [connection signal="pressed" from="StartScreen/QuitGameButton" to="." method="_on_QuitGameButton_pressed"]
 [connection signal="value_changed" from="OptionsScreen/MusicSlider" to="." method="_on_MusicSlider_value_changed"]
 [connection signal="value_changed" from="OptionsScreen/SoundEffectSlider" to="." method="_on_SoundEffectSlider_value_changed"]
 [connection signal="pressed" from="OptionsScreen/MainMenuButton" to="." method="_on_MainMenuButton_pressed"]
 [connection signal="pressed" from="TutorialScreen/FinishTutorialButton" to="." method="_on_FinishTutorialButton_pressed"]
+[connection signal="pressed" from="TutorialScreen/MainMenuButton" to="." method="_on_MainMenuButton_pressed"]
 [connection signal="pressed" from="EndScreen/RestartGameButton" to="." method="_on_RestartButton_pressed"]
 [connection signal="pressed" from="EndScreen/MainMenuButton" to="." method="_on_MainMenuButton_pressed"]
 [connection signal="pressed" from="EndScreen/QuitGameButton" to="." method="_on_QuitGameButton_pressed"]
