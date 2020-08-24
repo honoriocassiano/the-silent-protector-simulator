@@ -7,8 +7,9 @@ signal change_music_volume(value)
 signal change_sound_volume(value)
 
 const messagesByMinPoints = [
+	[1000, "You sure have a lot of free time."],
 	[200, "Congratulations, you are a true Silent Protector!"],
-	[100, "The army is proud of you!"],
+	[100, "The Protectors are proud of you!"],
 	[50, "You did OK, soldier."],
 	[0, "You failed as a Protector."]
 ]
