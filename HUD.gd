@@ -10,7 +10,7 @@ const messagesByMinPoints = [
 	[200, "Congratulations, you are a true Silent Protector!"],
 	[100, "The army is proud of you!"],
 	[50, "You did OK, soldier."],
-	[0, "You failed the nation!"]
+	[0, "You failed as a Protector."]
 ]
 
 
