@@ -40,33 +40,34 @@ func _process(delta):
 		var cosine = (mousePosition.x - bed_position.x) / distance
 		var sine = (mousePosition.y - bed_position.y) / distance
 		
-		var target_x = cosine * radius + bed_position.x
-		var target_y = sine * radius + bed_position.y
+		var target_position = Vector2(cosine * radius + bed_position.x, 
+									  sine * radius + bed_position.y)
+		var target_angle_to_bed = atan2(target_position.y - bed_position.y, 
+										target_position.x - bed_position.x)
 		
-		# move if and only if mouse is sufficiently further away
-		if position.distance_to(Vector2(target_x, target_y)) >= 1:
-			# calculate if soldier should move clockwise or counterclockwise
-			var orientation = (bed_position.y - position.y) * (target_x - bed_position.x) \
-					- (target_y - bed_position.y) * (bed_position.x - position.x)
+		# determine length of step
+		var step = min(abs(angle_to_bed - target_angle_to_bed), speed * delta)
 		
-			if orientation > 0:  # if clockwise
-				angle_to_bed += speed * delta
-			else:  # if counterclockwise or colinear
-				angle_to_bed -= speed * delta
+		# add distance travelled
+		distance_travelled_with_current_frame += step
+		
+		# determine if soldier should move clockwise or counterclockwise
+		var orientation = (bed_position.y - position.y) * (target_position.x - bed_position.x) \
+				- (target_position.y - bed_position.y) * (bed_position.x - position.x)
+		
+		step = step if orientation > 0 else -step
+		
+		var new_angle = angle_to_bed + step
+		
+		# perform the movement
+		position = bed_position + Vector2(cos(new_angle), sin(new_angle)) * radius
+		
+		# determine whether to play next animation
+		if distance_travelled_with_current_frame > 0.25:
+			current_frame = (current_frame + 1) % 2
+			distance_travelled_with_current_frame = 0
 			
-			var new_vector = Vector2(cos(angle_to_bed), sin(angle_to_bed)) * radius
-			
-			# determine whether to play the animation
-			distance_travelled_with_current_frame += speed * delta
-			
-			if distance_travelled_with_current_frame > 0.25:
-				current_frame = (current_frame + 1) % 2
-				distance_travelled_with_current_frame = 0
-				
-				$AnimatedSprite.set_frame(current_frame)
-			
-			# perform the movement
-			position = bed_position + new_vector
+			$AnimatedSprite.set_frame(current_frame)
 		
 		# always face towards bed
 		rotation = -atan2(position.x - bed_position.x, position.y - bed_position.y)
