@@ -19,6 +19,7 @@ config/name="The Silent Protector Simulator"
 config/description="Protect. While they sleep. Silently."
 run/main_scene="res://Main.tscn"
 config/icon="res://protect.png"
+config/windows_native_icon="res://icon.ico"
 
 [display]
 
