@@ -8,8 +8,11 @@ signal change_sound_volume(value)
 
 const TUTORIAL_ORIGIN = {DEFAULT = 0, CONTROLS_MENU = 1}
 const messagesByMinPoints = [
-	[1000, "You sure have a lot of free time."],
-	[200, "Congratulations, you are a true Silent Protector!"],
+	[100000, "Congratulations, that's the last mark.\nGo do something else."],
+	[50000, "Don't you have anything better to do?"],
+	[10000, "You sure have a lot of free time."],
+	[1000, "So you are a gamer, right?"],
+	[200, "Congratulations, you are a true\nSilent Protector!"],
 	[100, "The Protectors are proud of you!"],
 	[50, "You did OK, soldier."],
 	[0, "You failed as a Protector."]

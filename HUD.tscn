@@ -441,10 +441,10 @@ __meta__ = {
 }
 
 [node name="EndGameMessageLabel" type="Label" parent="EndScreen"]
-margin_left = 111.5
+margin_left = 112.0
 margin_top = 57.0
-margin_right = 675.5
-margin_bottom = 101.0
+margin_right = 676.0
+margin_bottom = 176.0
 grow_horizontal = 2
 grow_vertical = 2
 rect_pivot_offset = Vector2( 282, 22 )
